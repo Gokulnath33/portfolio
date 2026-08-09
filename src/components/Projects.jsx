@@ -21,7 +21,7 @@ export default function Projects() {
   const [simulatedMatch, setSimulatedMatch] = useState(false);
   const [matchStatus, setMatchStatus] = useState(null);
 
-  const categories = ['All', 'Java / Systems', 'Full-Stack / AI', 'AI & ML'];
+  const categories = ['All', 'Java / Systems', 'Full-Stack / Web', 'AI & ML'];
 
   const filteredProjects = activeFilter === 'All'
     ? projectsData

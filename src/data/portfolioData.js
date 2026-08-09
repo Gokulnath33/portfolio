@@ -100,18 +100,18 @@ export const skillsCategoryData = [
 
 export const projectsData = [
   {
-    id: "food-rescue",
-    title: "Smart Food Rescue Network",
-    subtitle: "Java Mini Project for Social Impact",
+    id: "smart-food-rescue",
+    title: "Smart Online Food Rescue System",
+    subtitle: "Java Full-Stack System for Social Impact",
     category: "Java / Systems",
     featured: true,
-    description: "An intelligent food redistribution network built with Java Swing and multithreading that connects food donors (restaurants, events) with receivers (NGOs, shelters) using smart matching data analytics to eliminate food waste.",
-    tools: ["Java Swing (GUI)", "Multithreading", "Collections (ArrayList, HashMap, PriorityQueue)", "Data Analytics"],
+    description: "An intelligent online food redistribution system built with Java that connects food donors (restaurants, events) with receivers (NGOs, shelters) using smart priority matching to eliminate food waste and address hunger.",
+    tools: ["Java", "Java Swing (GUI)", "Multithreading", "Collections Framework", "PriorityQueue", "OOP"],
     highlights: [
-      "Real-time background matching algorithm based on urgency and geographical priority queue",
+      "Real-time background matching algorithm based on urgency and geographical proximity",
       "Interactive Java Swing interface for donor registration and NGO collection tracking",
-      "Reduces food waste while ensuring efficient logistically-optimized food delivery",
-      "Implements OOP principles and thread safety for concurrent donor requests"
+      "Reduces food waste while ensuring logistically-optimized food delivery to those in need",
+      "Implements OOP principles and thread safety for concurrent donor request handling"
     ],
     architecture: [
       { step: "1. Donor Input", detail: "Restaurants register surplus food quantity, location & shelf-life" },
@@ -119,45 +119,76 @@ export const projectsData = [
       { step: "3. Smart Match", detail: "Background worker thread matches nearest receiver NGO" },
       { step: "4. Analytics", detail: "Generates report on total meals saved and waste reduction metric" }
     ],
-    metrics: {
-      mealsSaved: "1,200+",
-      matchingSpeed: "< 50ms",
-      threadEfficiency: "99.9%"
-    },
     demoUrl: "#",
-    githubUrl: "https://github.com/Gokulnath33/smart-food-rescue-network"
+    githubUrl: "https://github.com/Gokulnath33/smart-online-food-rescue-system"
   },
   {
-    id: "fullstack-ai-edge",
-    title: "Full-Stack AI Web Platform",
-    subtitle: "Ucanly InfoTech Internship Deliverable",
-    category: "Full-Stack / AI",
+    id: "task-master-react",
+    title: "Task Master",
+    subtitle: "React Component-Based Task Management App",
+    category: "Full-Stack / Web",
     featured: true,
-    description: "Responsive full-stack web application integrating cutting-edge AI features, intelligent user workflows, dynamic dashboards, and virtual team collaboration components.",
-    tools: ["React", "JavaScript (ES6+)", "Node.js", "AI API Integration", "CSS3 / Glassmorphism"],
+    description: "A feature-rich task management application built with React, leveraging reusable components, state management, and a clean modern UI to help users organize, prioritize, and track their daily tasks efficiently.",
+    tools: ["React", "JavaScript (ES6+)", "React Components", "CSS3", "State Management", "Hooks"],
     highlights: [
-      "Integrated machine learning models for real-time web application insights",
-      "Collaborated with cross-functional virtual teams to deliver scalable full-stack features",
-      "Optimized frontend performance and accessibility scores across mobile and desktop viewports"
+      "Component-driven architecture with reusable UI elements for scalability",
+      "Dynamic task creation, editing, deletion, and status-tracking features",
+      "Responsive design with intuitive UX for seamless task organization",
+      "Demonstrates React fundamentals including props, state, and lifecycle hooks"
     ],
     demoUrl: "#",
-    githubUrl: "https://github.com/Gokulnath33"
+    githubUrl: "https://github.com/Gokulnath33/Task-Master-With-React-Componenets"
   },
   {
-    id: "data-analytics-viz",
-    title: "Predictive AI Data Analytics Suite",
-    subtitle: "Data Science & Machine Learning Pipeline",
-    category: "AI & ML",
+    id: "expense-tracker",
+    title: "Expense Tracker",
+    subtitle: "Personal Finance Management Web App",
+    category: "Full-Stack / Web",
     featured: false,
-    description: "End-to-end data analytics and ML model evaluation pipeline for exploratory data analysis, outlier detection, and performance chart generation.",
-    tools: ["Python", "Pandas", "NumPy", "Scikit-Learn", "Matplotlib", "Seaborn"],
+    description: "A comprehensive personal finance tracking web application that allows users to log, categorize, and visualize their income and expenses with real-time balance calculation and insightful spending summaries.",
+    tools: ["JavaScript", "HTML5", "CSS3", "DOM Manipulation", "LocalStorage", "Chart.js"],
     highlights: [
-      "Automated preprocessing pipeline for missing values and feature scaling",
-      "Evaluates multiple classification & regression models with visual confusion matrix charts",
-      "Exports actionable insight summaries for data-driven decisions"
+      "Real-time income and expense tracking with automatic balance computation",
+      "Categorized transaction history with filter and search capabilities",
+      "Visual spending breakdown charts for data-driven financial decisions",
+      "Persistent data storage using browser LocalStorage for session continuity"
     ],
     demoUrl: "#",
-    githubUrl: "https://github.com/Gokulnath33"
+    githubUrl: "https://github.com/Gokulnath33/Expense-Tracker"
+  },
+  {
+    id: "samsung-sales-analysis",
+    title: "Samsung Sales Data Analysis",
+    subtitle: "Data Science & Business Intelligence Project",
+    category: "AI & ML",
+    featured: true,
+    description: "A comprehensive data analysis and visualization project on Samsung sales data, uncovering business insights, sales trends, regional performance, and product category analytics using Python data science libraries.",
+    tools: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter Notebook", "Data Wrangling"],
+    highlights: [
+      "In-depth exploratory data analysis (EDA) on Samsung product sales datasets",
+      "Identified top-performing product categories, regions, and seasonal sales trends",
+      "Generated heatmaps, bar charts, and correlation matrices for business insights",
+      "Automated data cleaning pipeline handling missing values and outlier detection"
+    ],
+    demoUrl: "#",
+    githubUrl: "https://github.com/Gokulnath33/Samsung-Sales-Data-Analysis"
+  },
+  {
+    id: "greeting-generator",
+    title: "Greeting Generator",
+    subtitle: "Dynamic Greeting Card Web Application",
+    category: "Full-Stack / Web",
+    featured: false,
+    description: "An interactive and dynamic greeting generator web application that creates personalized greeting messages and cards for various occasions, built with modern web technologies and a delightful user experience.",
+    tools: ["JavaScript", "HTML5", "CSS3", "DOM API", "Animations", "Responsive Design"],
+    highlights: [
+      "Dynamic generation of personalized greetings for multiple occasions and events",
+      "Smooth CSS animations and transitions for an engaging interactive experience",
+      "Fully responsive UI design compatible across desktop, tablet, and mobile screens",
+      "Clean, modular JavaScript code following web development best practices"
+    ],
+    demoUrl: "#",
+    githubUrl: "https://github.com/Gokulnath33/Greeting-Generator"
   }
 ];
 
