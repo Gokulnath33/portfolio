@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { Linkedin, Github, TwitterX, LeetCode, HackerRank } from './BrandIcons';
 import { personalInfo } from '../data/portfolioData';
+import GokulLogo from './GokulLogo';
 
 export default function Hero() {
   const [taglineIndex, setTaglineIndex] = useState(0);
@@ -179,18 +180,14 @@ export default function Hero() {
               <div className="relative glass-card p-8 rounded-3xl border border-[var(--border-glow)] overflow-hidden flex flex-col items-center text-center">
                 
                 {/* Glowing Avatar Shield */}
-                <div className="relative w-36 h-36 mb-6">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[var(--accent-cyan)] to-[var(--accent-pink)] p-1 animate-spin" style={{ animationDuration: '12s' }}>
-                    <div className="w-full h-full bg-[var(--bg-primary)] rounded-full" />
-                  </div>
-                  <div className="absolute inset-1 rounded-full bg-gradient-to-br from-[#1e293b] to-[#0f172a] flex items-center justify-center shadow-inner overflow-hidden">
-                    <div className="text-4xl font-extrabold font-heading text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-cyan)] via-[var(--accent-violet)] to-[var(--accent-pink)]">
-                      GM
-                    </div>
+                <div className="relative w-40 h-40 mb-6 flex items-center justify-center">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[var(--accent-cyan)] via-amber-500 to-[var(--accent-pink)] p-1 animate-spin" style={{ animationDuration: '16s' }} />
+                  <div className="relative z-10 w-[94%] h-[94%] rounded-full overflow-hidden flex items-center justify-center">
+                    <GokulLogo className="w-full h-full" size={150} showGlow={false} />
                   </div>
                   
                   {/* Floating Micro Badge */}
-                  <div className="absolute -bottom-1 -right-1 bg-[var(--accent-emerald)] text-black p-2 rounded-full shadow-lg border-2 border-[var(--bg-primary)]">
+                  <div className="absolute -bottom-1 -right-1 z-20 bg-[var(--accent-emerald)] text-black p-2 rounded-full shadow-lg border-2 border-[var(--bg-primary)]">
                     <Sparkles className="w-4 h-4 animate-bounce" />
                   </div>
                 </div>

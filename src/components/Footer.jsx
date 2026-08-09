@@ -1,7 +1,8 @@
 import React from 'react';
-import { Sparkles, Mail, Phone, ArrowUp, Download, Archive } from 'lucide-react';
+import { Mail, Phone, ArrowUp, Archive } from 'lucide-react';
 import { Linkedin, Github, TwitterX, LeetCode, HackerRank } from './BrandIcons';
 import { personalInfo } from '../data/portfolioData';
+import GokulLogo from './GokulLogo';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -43,10 +44,8 @@ export default function Footer() {
           
           {/* Brand Column */}
           <div className="flex flex-col gap-4">
-            <a href="#home" className="flex items-center gap-2.5 group w-fit">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--accent-cyan)] via-[var(--accent-indigo)] to-[var(--accent-pink)] flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
-                <Sparkles className="w-5 h-5 animate-pulse" />
-              </div>
+            <a href="#home" className="flex items-center gap-3 group w-fit">
+              <GokulLogo className="w-12 h-12" size={48} />
               <div>
                 <span className="font-extrabold text-xl font-heading tracking-wide text-[var(--text-main)] block leading-none">
                   {personalInfo.name}

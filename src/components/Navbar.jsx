@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sun, Moon, Menu, X, Sparkles, Send, FileText } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import GokulLogo from './GokulLogo';
 
 export default function Navbar({ theme, toggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
@@ -55,10 +56,8 @@ export default function Navbar({ theme, toggleTheme }) {
       <div className="container flex items-center justify-between">
         
         {/* Brand Logo */}
-        <a href="#home" className="flex items-center gap-2.5 group">
-          <div className="w-10 h-10 rounded-xl bg-[var(--gradient-brand)] flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform duration-300">
-            <Sparkles className="w-5 h-5 animate-pulse" />
-          </div>
+        <a href="#home" className="flex items-center gap-3 group">
+          <GokulLogo className="w-11 h-11" size={44} />
           <div className="flex flex-col">
             <span className="font-bold text-lg leading-none font-heading tracking-wide group-hover:text-[var(--accent-cyan)] transition-colors">
               {personalInfo.name}
