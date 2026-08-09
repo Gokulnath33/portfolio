@@ -189,6 +189,29 @@ export const projectsData = [
     ],
     demoUrl: "#",
     githubUrl: "https://github.com/Gokulnath33/Greeting-Generator"
+  },
+  {
+    id: "online-voting-registration",
+    title: "Online Voting Registration System",
+    subtitle: "Secure Digital Democracy Platform",
+    category: "Full-Stack / Web",
+    featured: true,
+    description: "A comprehensive online voter registration and voting system that enables citizens to register, verify eligibility, and cast votes digitally. Designed with security, data integrity, and user accessibility in mind to modernize the democratic process.",
+    tools: ["HTML5", "CSS3", "JavaScript", "MySQL", "PHP", "Form Validation", "Database Management"],
+    highlights: [
+      "Secure voter registration with eligibility verification and duplicate prevention",
+      "Role-based access control separating admin, voter, and officer functionalities",
+      "Tamper-resistant vote recording with unique voter ID generation and audit trails",
+      "Real-time result tabulation dashboard with candidate-wise vote analytics"
+    ],
+    architecture: [
+      { step: "1. Voter Registration", detail: "Citizens register with personal details; system validates eligibility and uniqueness" },
+      { step: "2. Authentication", detail: "Secure login with voter ID & credentials for authorized access" },
+      { step: "3. Vote Casting", detail: "Authenticated voters cast a single vote; system prevents double voting" },
+      { step: "4. Result Compilation", detail: "Admin dashboard displays live count, candidate standings, and audit logs" }
+    ],
+    demoUrl: "#",
+    githubUrl: "https://github.com/Gokulnath33/Online-Voting-Registeration-System"
   }
 ];
 

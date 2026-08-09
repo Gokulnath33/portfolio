@@ -54,8 +54,9 @@ export default function Experience() {
             <span>Work & Verified Milestones</span>
           </div>
           <h2 className="section-title">
-            Experience & <span className="gradient-text">Certifications</span>
+            Experience & <span className="fire-text">Certifications</span>
           </h2>
+          <span className="section-title-bar" />
           <p className="section-description">
             Industry exposure through web development internships and verified national certificates from NPTEL, Microsoft, Google, TCS iON, and IIT Bombay.
           </p>

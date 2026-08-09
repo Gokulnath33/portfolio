@@ -47,8 +47,9 @@ export default function Projects() {
             <span>Featured Software Creations</span>
           </div>
           <h2 className="section-title">
-            Projects & <span className="gradient-text">Innovations</span>
+            Projects & <span className="vibrant-text">Innovations</span>
           </h2>
+          <span className="section-title-bar" />
           <p className="section-description">
             Explore my engineering projects combining multithreaded systems, data analytics algorithms, and full-stack web solutions.
           </p>

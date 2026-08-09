@@ -103,8 +103,9 @@ export default function Contact() {
             <span>Let's Build Something Together</span>
           </div>
           <h2 className="section-title">
-            Get In <span className="gradient-text">Touch</span>
+            Get In <span className="vibrant-text">Touch</span>
           </h2>
+          <span className="section-title-bar" />
           <p className="section-description">
             Have a project idea, internship opportunity, or technical question? Send me a message using the EmailJS form below.
           </p>

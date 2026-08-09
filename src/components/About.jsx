@@ -34,8 +34,9 @@ export default function About() {
             <span>Discover My Background</span>
           </div>
           <h2 className="section-title">
-            About <span className="gradient-text">Me</span> & Academic Journey
+            About <span className="amber-text">Me</span> & Academic Journey
           </h2>
+          <span className="section-title-bar" />
           <p className="section-description">
             Passionate about transforming data into intelligence and code into engaging web user experiences.
           </p>

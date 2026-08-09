@@ -53,8 +53,9 @@ export default function Skills() {
             <span>Technical & Soft Mastery</span>
           </div>
           <h2 className="section-title">
-            Skills & <span className="gradient-text">Competencies</span>
+            Skills & <span className="emerald-text">Competencies</span>
           </h2>
+          <span className="section-title-bar" />
           <p className="section-description">
             A comprehensive overview of my technical stack in AI, data analytics, software engineering, and visual design.
           </p>

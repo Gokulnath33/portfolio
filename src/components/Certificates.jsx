@@ -224,8 +224,9 @@ export default function Certificates() {
             <span>Professional Credentials & Achievements</span>
           </div>
           <h2 className="section-title">
-            My <span className="gradient-text">Certificates</span>
+            My <span className="ocean-text">Certificates</span>
           </h2>
+          <span className="section-title-bar" />
           <p className="section-description !mb-6">
             A curated collection of {certificationsData.length}+ verified certifications from world-class institutions and industry leaders, showcasing expertise across AI, Cloud, Full-Stack, and Engineering domains.
           </p>
