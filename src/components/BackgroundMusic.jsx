@@ -4,164 +4,212 @@ import { Music, Volume2, VolumeX, Pause, Play, Sparkles } from 'lucide-react';
 export default function BackgroundMusic() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(0.35);
+  const [volume, setVolume] = useState(0.65);
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
 
-  const audioRef = useRef(null);
-  const synthContextRef = useRef(null);
-  const synthNodesRef = useRef(null);
+  const audioCtxRef = useRef(null);
+  const masterGainRef = useRef(null);
+  const intervalRef = useRef(null);
+  const activeNodesRef = useRef([]);
 
-  // Web Audio API Ambient Sound Generator (Fallback & Native Synth)
-  const startWebAudioSynth = () => {
+  // Ambient chords (frequencies in Hz)
+  const chordProgression = [
+    // Cmaj9 (C3, E3, G3, B3, D4)
+    [130.81, 164.81, 196.00, 246.94, 293.66],
+    // Am9 (A2, E3, G3, C4, E4)
+    [110.00, 164.81, 196.00, 261.63, 329.63],
+    // Fmaj7 (F2, C3, F3, A3, C4)
+    [87.31, 130.81, 174.61, 220.00, 261.63],
+    // Gadd9 (G2, D3, G3, B3, D4)
+    [98.00, 146.83, 196.00, 246.94, 293.66]
+  ];
+
+  // High pentatonic melody frequencies for arpeggiator (C5, D5, E5, G5, A5, C6)
+  const melodyNotes = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
+
+  const stopMusicEngine = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    activeNodesRef.current.forEach(node => {
+      try {
+        if (node.stop) node.stop();
+        if (node.disconnect) node.disconnect();
+      } catch (e) {}
+    });
+    activeNodesRef.current = [];
+  };
+
+  const startMusicEngine = () => {
     try {
-      if (!synthContextRef.current) {
+      if (!audioCtxRef.current) {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
         if (!AudioContext) return;
-        synthContextRef.current = new AudioContext();
+        audioCtxRef.current = new AudioContext();
       }
 
-      const ctx = synthContextRef.current;
+      const ctx = audioCtxRef.current;
       if (ctx.state === 'suspended') {
         ctx.resume();
       }
 
-      // Stop any existing nodes
-      stopWebAudioSynth();
+      stopMusicEngine();
 
+      // Master Gain setup
       const masterGain = ctx.createGain();
-      masterGain.gain.setValueAtTime(isMuted ? 0 : volume * 0.15, ctx.currentTime);
+      const targetVolume = isMuted ? 0 : volume * 0.5;
+      masterGain.gain.setValueAtTime(targetVolume, ctx.currentTime);
       masterGain.connect(ctx.destination);
+      masterGainRef.current = masterGain;
 
-      // Create warm ambient chord (C maj9 / F maj7 atmospheric pad: C3, E3, G3, B3, D4)
-      const freqs = [130.81, 164.81, 196.00, 246.94, 293.66];
-      const nodes = [];
+      // Echo / Delay Node for spacey ambient reverb effect
+      const delayNode = ctx.createDelay();
+      delayNode.delayTime.setValueAtTime(0.35, ctx.currentTime);
 
-      freqs.forEach((freq, idx) => {
+      const delayFeedback = ctx.createGain();
+      delayFeedback.gain.setValueAtTime(0.35, ctx.currentTime);
+
+      const delayFilter = ctx.createBiquadFilter();
+      delayFilter.type = 'lowpass';
+      delayFilter.frequency.setValueAtTime(2000, ctx.currentTime);
+
+      delayNode.connect(delayFilter);
+      delayFilter.connect(delayFeedback);
+      delayFeedback.connect(delayNode);
+      delayNode.connect(masterGain);
+
+      let currentChordIdx = 0;
+      let stepCounter = 0;
+
+      // Function to trigger a warm ambient chord layer
+      const playChordLayer = (freqs) => {
+        freqs.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          const filter = ctx.createBiquadFilter();
+
+          osc.type = idx === 0 ? 'sine' : idx % 2 === 0 ? 'triangle' : 'sine';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+          // Subtle LFO pitch modulation
+          const lfo = ctx.createOscillator();
+          const lfoGain = ctx.createGain();
+          lfo.frequency.setValueAtTime(0.12 + idx * 0.02, ctx.currentTime);
+          lfoGain.gain.setValueAtTime(1.8, ctx.currentTime);
+          lfo.connect(lfoGain);
+          lfoGain.connect(osc.frequency);
+          lfo.start();
+
+          // Warm filter cutoff
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(1400 + idx * 200, ctx.currentTime);
+
+          // Envelope attack and sustain
+          gain.gain.setValueAtTime(0.001, ctx.currentTime);
+          gain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 1.5);
+
+          osc.connect(filter);
+          filter.connect(gain);
+          gain.connect(masterGain);
+          gain.connect(delayNode);
+
+          osc.start();
+          activeNodesRef.current.push(osc, lfo);
+        });
+      };
+
+      // Function to play a crisp, relaxing chime/arpeggio note
+      const playChimeNote = () => {
+        const noteFreq = melodyNotes[Math.floor(Math.random() * melodyNotes.length)];
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         const filter = ctx.createBiquadFilter();
 
-        osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
-        osc.frequency.setValueAtTime(freq, ctx.currentTime);
-
-        // Subtle LFO modulation for organic ambient drift
-        const lfo = ctx.createOscillator();
-        const lfoGain = ctx.createGain();
-        lfo.frequency.setValueAtTime(0.1 + idx * 0.03, ctx.currentTime);
-        lfoGain.gain.setValueAtTime(1.5, ctx.currentTime);
-        lfo.connect(lfoGain);
-        lfoGain.connect(osc.frequency);
-        lfo.start();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(noteFreq, ctx.currentTime);
 
         filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(450 + idx * 80, ctx.currentTime);
+        filter.frequency.setValueAtTime(3000, ctx.currentTime);
 
-        gain.gain.setValueAtTime(0.08, ctx.currentTime);
+        const now = ctx.currentTime;
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.08, now + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
 
         osc.connect(filter);
         filter.connect(gain);
         gain.connect(masterGain);
+        gain.connect(delayNode);
 
-        osc.start();
-        nodes.push({ osc, gain, lfo });
-      });
+        osc.start(now);
+        osc.stop(now + 2.0);
+        activeNodesRef.current.push(osc);
+      };
 
-      synthNodesRef.current = { nodes, masterGain };
+      // Start initial chord
+      playChordLayer(chordProgression[0]);
+
+      // Timer loop: change chords every 4 seconds, play chimes periodically
+      intervalRef.current = setInterval(() => {
+        stepCounter++;
+
+        // Play chime notes on rhythmic intervals
+        if (stepCounter % 2 === 0 || Math.random() > 0.4) {
+          playChimeNote();
+        }
+
+        // Cycle chord progression every 8 steps (4 seconds)
+        if (stepCounter % 8 === 0) {
+          currentChordIdx = (currentChordIdx + 1) % chordProgression.length;
+          playChordLayer(chordProgression[currentChordIdx]);
+        }
+      }, 500);
+
     } catch (e) {
-      console.log('Web Audio synth ambient note:', e);
+      console.error('Audio Music Engine Error:', e);
     }
   };
 
-  const stopWebAudioSynth = () => {
-    if (synthNodesRef.current?.nodes) {
-      synthNodesRef.current.nodes.forEach(({ osc, lfo }) => {
-        try {
-          osc.stop();
-          lfo.stop();
-        } catch (e) {}
-      });
-      synthNodesRef.current = null;
-    }
-  };
-
-  // Toggle playback
   const togglePlay = () => {
     setHasInteracted(true);
     if (isPlaying) {
-      if (audioRef.current && !audioRef.current.paused) {
-        audioRef.current.pause();
-      }
-      stopWebAudioSynth();
+      stopMusicEngine();
       setIsPlaying(false);
     } else {
       setIsPlaying(true);
-      // Attempt HTML5 audio first, fallback to Web Audio Synth pad
-      if (audioRef.current) {
-        audioRef.current.volume = isMuted ? 0 : volume;
-        audioRef.current.play().then(() => {
-          // Playing audio file successfully
-        }).catch((err) => {
-          console.log('Audio file play fallback to Ambient Synth Pad:', err);
-          startWebAudioSynth();
-        });
-      } else {
-        startWebAudioSynth();
-      }
+      startMusicEngine();
     }
   };
 
-  // Handle Volume change
   const handleVolumeChange = (e) => {
     const val = parseFloat(e.target.value);
     setVolume(val);
     if (val > 0 && isMuted) setIsMuted(false);
-    if (audioRef.current) {
-      audioRef.current.volume = isMuted ? 0 : val;
-    }
-    if (synthNodesRef.current?.masterGain && synthContextRef.current) {
-      synthNodesRef.current.masterGain.gain.setValueAtTime(
-        isMuted ? 0 : val * 0.15,
-        synthContextRef.current.currentTime
-      );
+    if (masterGainRef.current && audioCtxRef.current) {
+      const targetGain = isMuted ? 0 : val * 0.5;
+      masterGainRef.current.gain.setTargetAtTime(targetGain, audioCtxRef.current.currentTime, 0.05);
     }
   };
 
-  // Toggle Mute
   const toggleMute = () => {
     const nextMute = !isMuted;
     setIsMuted(nextMute);
-    if (audioRef.current) {
-      audioRef.current.volume = nextMute ? 0 : volume;
-    }
-    if (synthNodesRef.current?.masterGain && synthContextRef.current) {
-      synthNodesRef.current.masterGain.gain.setValueAtTime(
-        nextMute ? 0 : volume * 0.15,
-        synthContextRef.current.currentTime
-      );
+    if (masterGainRef.current && audioCtxRef.current) {
+      const targetGain = nextMute ? 0 : volume * 0.5;
+      masterGainRef.current.gain.setTargetAtTime(targetGain, audioCtxRef.current.currentTime, 0.05);
     }
   };
 
-  // Sync state on unmount
   useEffect(() => {
     return () => {
-      stopWebAudioSynth();
+      stopMusicEngine();
     };
   }, []);
 
   return (
     <div className="fixed bottom-6 right-6 z-[90] flex items-center gap-2">
-      {/* HTML5 Audio element */}
-      <audio
-        ref={audioRef}
-        src="/audio/ambient.mp3"
-        loop
-        preload="auto"
-        onEnded={() => {
-          if (isPlaying) startWebAudioSynth();
-        }}
-      />
-
       {/* Expanded Volume Control Slider */}
       <div
         className={`transition-all duration-300 transform origin-right flex items-center gap-2 px-3 py-2 rounded-2xl glass-pill backdrop-blur-xl border border-[var(--border-color)] shadow-xl ${
@@ -211,7 +259,7 @@ export default function BackgroundMusic() {
               ? 'bg-gradient-to-r from-[rgba(99,102,241,0.9)] to-[rgba(236,72,153,0.9)] text-white border-white/30 shadow-[0_0_25px_rgba(99,102,241,0.5)] scale-105'
               : 'bg-[var(--bg-card)] text-[var(--text-muted)] border-[var(--border-color)] hover:border-[var(--accent-cyan)] hover:text-white hover:scale-105'
           }`}
-          title={isPlaying ? 'Pause Background Music' : 'Play Ambient Music'}
+          title={isPlaying ? 'Pause Ambient Music' : 'Play Ambient Music'}
         >
           {isPlaying ? (
             <>
