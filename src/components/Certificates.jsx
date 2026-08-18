@@ -21,61 +21,96 @@ import { certificationsData, personalInfo } from '../data/portfolioData';
 
 /* ───────── issuer color map ───────── */
 const ISSUER_COLORS = {
-  'Infosys Springboard': {
-    gradient: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
-    bg: 'rgba(59,130,246,0.12)',
-    border: 'rgba(59,130,246,0.35)',
-    text: '#60a5fa',
-    glow: '0 0 25px rgba(59,130,246,0.3)'
+  'HackerRank': {
+    gradient: 'linear-gradient(135deg, #2ec4b6, #00b4d8, #00f5d4)',
+    bg: 'rgba(46,196,182,0.15)',
+    border: 'rgba(46,196,182,0.4)',
+    text: '#2ec4b6',
+    glow: '0 0 28px rgba(46,196,182,0.4)'
   },
-  'TCS iON': {
-    gradient: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
-    bg: 'rgba(139,92,246,0.12)',
-    border: 'rgba(139,92,246,0.35)',
-    text: '#a78bfa',
-    glow: '0 0 25px rgba(139,92,246,0.3)'
+  'HCL GUVI': {
+    gradient: 'linear-gradient(135deg, #00b4d8, #0077b6, #90e0ef)',
+    bg: 'rgba(0,180,216,0.15)',
+    border: 'rgba(0,180,216,0.4)',
+    text: '#38bdf8',
+    glow: '0 0 28px rgba(0,180,216,0.4)'
   },
-  'Google': {
-    gradient: 'linear-gradient(135deg, #f59e0b, #ea580c, #ef4444, #22c55e, #3b82f6)',
-    bg: 'rgba(245,158,11,0.12)',
-    border: 'rgba(245,158,11,0.35)',
+  'AICTE Parakh': {
+    gradient: 'linear-gradient(135deg, #f59e0b, #d97706, #fbbf24)',
+    bg: 'rgba(245,158,11,0.15)',
+    border: 'rgba(245,158,11,0.4)',
     text: '#fbbf24',
-    glow: '0 0 25px rgba(245,158,11,0.3)'
+    glow: '0 0 28px rgba(245,158,11,0.4)'
+  },
+  'LinkedIn & Microsoft': {
+    gradient: 'linear-gradient(135deg, #0a66c2, #0077b5, #0284c7)',
+    bg: 'rgba(10,102,194,0.15)',
+    border: 'rgba(10,102,194,0.4)',
+    text: '#38bdf8',
+    glow: '0 0 28px rgba(10,102,194,0.4)'
   },
   'Microsoft & LinkedIn': {
-    gradient: 'linear-gradient(135deg, #06b6d4, #0284c7)',
-    bg: 'rgba(6,182,212,0.12)',
-    border: 'rgba(6,182,212,0.35)',
-    text: '#22d3ee',
-    glow: '0 0 25px rgba(6,182,212,0.3)'
+    gradient: 'linear-gradient(135deg, #0a66c2, #0077b5, #0284c7)',
+    bg: 'rgba(10,102,194,0.15)',
+    border: 'rgba(10,102,194,0.4)',
+    text: '#38bdf8',
+    glow: '0 0 28px rgba(10,102,194,0.4)'
+  },
+  'Google': {
+    gradient: 'linear-gradient(135deg, #ea4335, #fbbc05, #34a853, #4285f4)',
+    bg: 'rgba(234,67,53,0.15)',
+    border: 'rgba(66,133,244,0.4)',
+    text: '#60a5fa',
+    glow: '0 0 28px rgba(66,133,244,0.4)'
+  },
+  'Infosys Springboard': {
+    gradient: 'linear-gradient(135deg, #007acc, #005999, #38bdf8)',
+    bg: 'rgba(0,122,204,0.15)',
+    border: 'rgba(0,122,204,0.4)',
+    text: '#60a5fa',
+    glow: '0 0 28px rgba(0,122,204,0.4)'
+  },
+  'TCS iON': {
+    gradient: 'linear-gradient(135deg, #8b5cf6, #6d28d9, #c084fc)',
+    bg: 'rgba(139,92,246,0.15)',
+    border: 'rgba(139,92,246,0.4)',
+    text: '#a78bfa',
+    glow: '0 0 28px rgba(139,92,246,0.4)'
   },
   'Simplilearn': {
-    gradient: 'linear-gradient(135deg, #ec4899, #be185d)',
-    bg: 'rgba(236,72,153,0.12)',
-    border: 'rgba(236,72,153,0.35)',
+    gradient: 'linear-gradient(135deg, #ec4899, #be185d, #f472b6)',
+    bg: 'rgba(236,72,153,0.15)',
+    border: 'rgba(236,72,153,0.4)',
     text: '#f472b6',
-    glow: '0 0 25px rgba(236,72,153,0.3)'
+    glow: '0 0 28px rgba(236,72,153,0.4)'
   },
   'NPTEL & Academics': {
-    gradient: 'linear-gradient(135deg, #10b981, #047857)',
-    bg: 'rgba(16,185,129,0.12)',
-    border: 'rgba(16,185,129,0.35)',
+    gradient: 'linear-gradient(135deg, #10b981, #059669, #34d399)',
+    bg: 'rgba(16,185,129,0.15)',
+    border: 'rgba(16,185,129,0.4)',
     text: '#34d399',
-    glow: '0 0 25px rgba(16,185,129,0.3)'
+    glow: '0 0 28px rgba(16,185,129,0.4)'
+  },
+  'IEEE & Badges': {
+    gradient: 'linear-gradient(135deg, #f97316, #ea580c, #fb923c)',
+    bg: 'rgba(249,115,22,0.15)',
+    border: 'rgba(249,115,22,0.4)',
+    text: '#fb923c',
+    glow: '0 0 28px rgba(249,115,22,0.4)'
   },
   'IEEE': {
-    gradient: 'linear-gradient(135deg, #f97316, #c2410c)',
-    bg: 'rgba(249,115,22,0.12)',
-    border: 'rgba(249,115,22,0.35)',
+    gradient: 'linear-gradient(135deg, #f97316, #ea580c, #fb923c)',
+    bg: 'rgba(249,115,22,0.15)',
+    border: 'rgba(249,115,22,0.4)',
     text: '#fb923c',
-    glow: '0 0 25px rgba(249,115,22,0.3)'
+    glow: '0 0 28px rgba(249,115,22,0.4)'
   },
   'IIT Bombay': {
-    gradient: 'linear-gradient(135deg, #eab308, #ca8a04)',
-    bg: 'rgba(234,179,8,0.12)',
-    border: 'rgba(234,179,8,0.35)',
+    gradient: 'linear-gradient(135deg, #eab308, #ca8a04, #facc15)',
+    bg: 'rgba(234,179,8,0.15)',
+    border: 'rgba(234,179,8,0.4)',
     text: '#facc15',
-    glow: '0 0 25px rgba(234,179,8,0.3)'
+    glow: '0 0 28px rgba(234,179,8,0.4)'
   }
 };
 
@@ -529,18 +564,29 @@ export default function Certificates() {
               </div>
             </div>
 
-            {/* PDF iframe */}
-            <div className="flex-1 relative bg-[#1a1a2e]">
-              <iframe
-                src={viewerCert.fileUrl}
-                className="w-full h-full border-none"
-                title={viewerCert.title}
-              />
-              {/* Fallback text if iframe can't render */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 glass-pill text-xs text-[var(--text-dim)] opacity-60">
-                <FileText className="w-3 h-3" />
-                <span>If PDF doesn't load, use the download or open buttons above</span>
-              </div>
+            {/* Certificate content viewer (Image vs PDF) */}
+            <div className="flex-1 relative bg-[#0f0f1d] flex items-center justify-center overflow-auto p-4">
+              {/\.(png|jpg|jpeg|webp)$/i.test(viewerCert.fileUrl) ? (
+                <div className="relative max-w-full max-h-full flex items-center justify-center p-2">
+                  <img
+                    src={viewerCert.fileUrl}
+                    alt={viewerCert.title}
+                    className="max-h-[75vh] max-w-full object-contain rounded-2xl border border-[rgba(255,255,255,0.15)] shadow-2xl transition-transform hover:scale-[1.02] duration-300"
+                  />
+                </div>
+              ) : (
+                <>
+                  <iframe
+                    src={viewerCert.fileUrl}
+                    className="w-full h-full border-none rounded-b-2xl"
+                    title={viewerCert.title}
+                  />
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 glass-pill text-xs text-[var(--text-dim)] opacity-60">
+                    <FileText className="w-3 h-3" />
+                    <span>If document preview doesn't load, use download or open buttons above</span>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

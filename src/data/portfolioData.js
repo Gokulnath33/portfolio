@@ -233,6 +233,290 @@ export const experienceData = [
 
 export const certificationsData = [
   // ═══════════════════════════════════════════════
+  // HACKERRANK — 4 Certificates
+  // ═══════════════════════════════════════════════
+  {
+    id: "hackerrank-java-basic",
+    title: "Java (Basic) Skill Certification",
+    issuer: "HackerRank",
+    score: "Verified Skill",
+    tag: "HackerRank",
+    category: "HackerRank",
+    fileUrl: "/certificates/java_basic certificate.pdf",
+    description: "Covers Java language fundamentals, Object-Oriented Programming, Data Structures, and Exception Handling.",
+    icon: "Code2"
+  },
+  {
+    id: "hackerrank-python-basic",
+    title: "Python (Basic) Skill Certification",
+    issuer: "HackerRank",
+    score: "Verified Skill",
+    tag: "HackerRank",
+    category: "HackerRank",
+    fileUrl: "/certificates/python_basic certificate.pdf",
+    description: "Covers Python 3 syntax, control structures, list comprehensions, lambda functions, and string manipulation.",
+    icon: "Code2"
+  },
+  {
+    id: "hackerrank-sql-basic",
+    title: "SQL (Basic) Skill Certification",
+    issuer: "HackerRank",
+    score: "Verified Skill",
+    tag: "HackerRank",
+    category: "HackerRank",
+    fileUrl: "/certificates/sql_basic certificate.pdf",
+    description: "Covers relational database queries, JOINs, aggregate functions, filtering, and group by clauses.",
+    icon: "Database"
+  },
+  {
+    id: "hackerrank-sql-intermediate",
+    title: "SQL (Intermediate) Skill Certification",
+    issuer: "HackerRank",
+    score: "Intermediate Verified",
+    tag: "HackerRank",
+    category: "HackerRank",
+    fileUrl: "/certificates/sql_intermediate certificate.pdf",
+    description: "Complex SQL queries involving subqueries, CTEs, window functions, indexing, and query optimization.",
+    icon: "Database"
+  },
+
+  // ═══════════════════════════════════════════════
+  // HCL GUVI — 2 Certificates
+  // ═══════════════════════════════════════════════
+  {
+    id: "hcl-guvi-cert-1",
+    title: "Full-Stack Web Development & Python Proficiency",
+    issuer: "HCL GUVI",
+    score: "Certified",
+    tag: "HCL GUVI",
+    category: "HCL GUVI",
+    fileUrl: "/certificates/HCL GUVI Certification - C7r6m91Y7281f3iXE0.png",
+    description: "Hands-on certification in Python backend development, Web APIs, and Full-Stack fundamentals.",
+    icon: "Globe"
+  },
+  {
+    id: "hcl-guvi-cert-2",
+    title: "Artificial Intelligence & Data Science Mastery",
+    issuer: "HCL GUVI",
+    score: "Certified",
+    tag: "HCL GUVI",
+    category: "HCL GUVI",
+    fileUrl: "/certificates/HCL GUVI Certification - s89k17G8xvH9867187.png",
+    description: "Practical training and certification in Machine Learning algorithms, Data Analytics, and AI workflows.",
+    icon: "BrainCircuit"
+  },
+
+  // ═══════════════════════════════════════════════
+  // AICTE PARAKH — 6 Assessment Reports
+  // ═══════════════════════════════════════════════
+  {
+    id: "aicte-parakh-1",
+    title: "AICTE PARAKH Technical Assessment Report I",
+    issuer: "AICTE PARAKH",
+    score: "National Level",
+    tag: "AICTE Parakh",
+    category: "AICTE Parakh",
+    fileUrl: "/certificates/1Report_Generated_16-09-25.pdf",
+    description: "National-level engineering aptitude and technical core competency assessment report evaluated by AICTE.",
+    icon: "FileText"
+  },
+  {
+    id: "aicte-parakh-2",
+    title: "AICTE PARAKH Technical Assessment Report II",
+    issuer: "AICTE PARAKH",
+    score: "National Level",
+    tag: "AICTE Parakh",
+    category: "AICTE Parakh",
+    fileUrl: "/certificates/2Report_Generated_13-10-25.pdf",
+    description: "Evaluation report on problem-solving, logical reasoning, and domain knowledge benchmarks.",
+    icon: "FileText"
+  },
+  {
+    id: "aicte-parakh-3",
+    title: "AICTE PARAKH Technical Assessment Report III",
+    issuer: "AICTE PARAKH",
+    score: "National Level",
+    tag: "AICTE Parakh",
+    category: "AICTE Parakh",
+    fileUrl: "/certificates/3Report_Generated_08-03-26.pdf",
+    description: "Performance analysis report covering AI, Data Structures, and Computer Science fundamentals.",
+    icon: "FileText"
+  },
+  {
+    id: "aicte-parakh-4",
+    title: "AICTE PARAKH Technical Assessment Report IV",
+    issuer: "AICTE PARAKH",
+    score: "National Level",
+    tag: "AICTE Parakh",
+    category: "AICTE Parakh",
+    fileUrl: "/certificates/4Report_Generated_20-03-26.pdf",
+    description: "Detailed competency matrix assessing quantitative, verbal, and analytical skill parameters.",
+    icon: "FileText"
+  },
+  {
+    id: "aicte-parakh-5",
+    title: "AICTE PARAKH Technical Assessment Report V",
+    issuer: "AICTE PARAKH",
+    score: "National Level",
+    tag: "AICTE Parakh",
+    category: "AICTE Parakh",
+    fileUrl: "/certificates/5Report_Generated_03-04-26.pdf",
+    description: "Comprehensive national benchmark report highlighting strengths in AI & Data Science domain.",
+    icon: "FileText"
+  },
+  {
+    id: "aicte-parakh-6",
+    title: "AICTE PARAKH Technical Assessment Report VI",
+    issuer: "AICTE PARAKH",
+    score: "National Level",
+    tag: "AICTE Parakh",
+    category: "AICTE Parakh",
+    fileUrl: "/certificates/6Report_Generated_21-06-26.pdf",
+    description: "Final AICTE SLA assessment score report validating technical readiness and domain proficiency.",
+    icon: "FileText"
+  },
+
+  // ═══════════════════════════════════════════════
+  // LINKEDIN & MICROSOFT — 9 Certificates
+  // ═══════════════════════════════════════════════
+  {
+    id: "microsoft-genai-career",
+    title: "Career Essentials in Generative AI",
+    issuer: "Microsoft & LinkedIn",
+    score: "Professional Cert",
+    tag: "LinkedIn",
+    category: "LinkedIn & Microsoft",
+    fileUrl: "/certificates/CertificateOfCompletion_Career Essentials in Generative AI by Microsoft and LinkedIn.pdf",
+    description: "Generative AI concepts, Large Language Models, prompt engineering, and ethical AI implementation.",
+    icon: "Sparkles"
+  },
+  {
+    id: "microsoft-azure-ai-essentials",
+    title: "Microsoft Azure AI Essentials Professional Certificate",
+    issuer: "Microsoft & LinkedIn",
+    score: "Professional Cert",
+    tag: "Azure AI",
+    category: "LinkedIn & Microsoft",
+    fileUrl: "/certificates/CertificateOfCompletion_Microsoft Azure AI Essentials Professional Certificate by Microsoft and LinkedIn.pdf",
+    description: "Cloud-native AI vision, speech, language, and predictive ML models on Microsoft Azure.",
+    icon: "Cloud"
+  },
+  {
+    id: "linkedin-ethics-genai-1",
+    title: "Ethics in the Age of Generative AI",
+    issuer: "LinkedIn Learning",
+    score: "Certified",
+    tag: "LinkedIn",
+    category: "LinkedIn & Microsoft",
+    fileUrl: "/certificates/CertificateOfCompletion_Ethics in the Age of Generative AI.pdf",
+    description: "Understanding ethical considerations, bias mitigation, and responsible AI deployment strategies.",
+    icon: "Shield"
+  },
+  {
+    id: "linkedin-ethics-genai-2",
+    title: "Ethics in Generative AI — Advanced Principles",
+    issuer: "LinkedIn Learning",
+    score: "Certified",
+    tag: "LinkedIn",
+    category: "LinkedIn & Microsoft",
+    fileUrl: "/certificates/CertificateOfCompletion_Ethics in the Age of Generative AI (1).pdf",
+    description: "In-depth study on transparency, privacy safeguards, and algorithmic fairness in GenAI.",
+    icon: "Shield"
+  },
+  {
+    id: "linkedin-ethics-genai-3",
+    title: "Responsible AI Governance & Compliance",
+    issuer: "LinkedIn Learning",
+    score: "Certified",
+    tag: "LinkedIn",
+    category: "LinkedIn & Microsoft",
+    fileUrl: "/certificates/CertificateOfCompletion_Ethics in the Age of Generative AI (2).pdf",
+    description: "Frameworks for AI governance, legal compliance, and safety auditing in enterprise AI.",
+    icon: "Shield"
+  },
+  {
+    id: "linkedin-human-skills-ai",
+    title: "Investing in Human Skills in the Age of AI",
+    issuer: "LinkedIn Learning",
+    score: "Certified",
+    tag: "LinkedIn",
+    category: "LinkedIn & Microsoft",
+    fileUrl: "/certificates/CertificateOfCompletion_Investing in Human Skills in the Age of AI.pdf",
+    description: "Navigating human-AI collaboration, critical thinking, emotional intelligence, and adaptability.",
+    icon: "Users"
+  },
+  {
+    id: "linkedin-copilot-prompting",
+    title: "Microsoft Copilot: The Art of Prompt Writing",
+    issuer: "LinkedIn Learning",
+    score: "Certified",
+    tag: "LinkedIn",
+    category: "LinkedIn & Microsoft",
+    fileUrl: "/certificates/CertificateOfCompletion_Microsoft Copilot The Art of Prompt Writing.pdf",
+    description: "Mastering prompt engineering techniques to maximize productivity with Microsoft Copilot.",
+    icon: "Sparkles"
+  },
+  {
+    id: "linkedin-what-is-genai",
+    title: "What Is Generative AI?",
+    issuer: "LinkedIn Learning",
+    score: "Certified",
+    tag: "LinkedIn",
+    category: "LinkedIn & Microsoft",
+    fileUrl: "/certificates/CertificateOfCompletion_What Is Generative AI.pdf",
+    description: "Foundational mechanics of generative pre-trained transformers, diffusion models, and neural nets.",
+    icon: "BrainCircuit"
+  },
+  {
+    id: "linkedin-ai-literacy",
+    title: "Your Top AI Questions Answered: AI Literacy for Everyone",
+    issuer: "LinkedIn Learning",
+    score: "Certified",
+    tag: "LinkedIn",
+    category: "LinkedIn & Microsoft",
+    fileUrl: "/certificates/CertificateOfCompletion_Your Top AI Questions Answered AI Literacy for Everyone.pdf",
+    description: "Comprehensive primer demystifying artificial intelligence concepts for technical and non-technical audiences.",
+    icon: "BookOpen"
+  },
+
+  // ═══════════════════════════════════════════════
+  // GOOGLE — 3 Credentials
+  // ═══════════════════════════════════════════════
+  {
+    id: "google-cloud-foundations",
+    title: "Google Cloud Foundations",
+    issuer: "Google",
+    score: "Certified",
+    tag: "Google",
+    category: "Google",
+    fileUrl: "/certificates/GOOGLE CERT-1.pdf",
+    description: "Google Cloud Platform foundational architectures, storage systems, compute engines, and IAM.",
+    icon: "Cloud"
+  },
+  {
+    id: "google-ai-analytics",
+    title: "Google AI & Data Analytics Specialization",
+    issuer: "Google",
+    score: "Certified",
+    tag: "Google",
+    category: "Google",
+    fileUrl: "/certificates/GOOGLE CERT-2.pdf",
+    description: "Advanced Google AI services, BigQuery data pipelines, and machine learning analytics.",
+    icon: "BrainCircuit"
+  },
+  {
+    id: "google-cloud-skill-badge",
+    title: "Google Cloud Skill & AI Verified Badge",
+    issuer: "Google Cloud",
+    score: "Verified Badge",
+    tag: "Google",
+    category: "Google",
+    fileUrl: "/certificates/708ead53-fada-450d-baef-dc27569317a3.png",
+    description: "Verified Google Cloud digital skill badge recognizing hands-on cloud and AI lab completions.",
+    icon: "Award"
+  },
+
+  // ═══════════════════════════════════════════════
   // INFOSYS SPRINGBOARD — 22 Certificates
   // ═══════════════════════════════════════════════
   {
@@ -265,7 +549,7 @@ export const certificationsData = [
     tag: "Infosys",
     category: "Infosys Springboard",
     fileUrl: "/certificates/3 INFOSYS SPRING CERT...pdf",
-    description: "Java syntax, object-oriented design patterns, and exception handling.",
+    description: "Java syntax, object-oriented design patterns, multithreading, and exception handling.",
     icon: "Code2"
   },
   {
@@ -276,7 +560,7 @@ export const certificationsData = [
     tag: "Infosys",
     category: "Infosys Springboard",
     fileUrl: "/certificates/4 INFOSYS SPRING CERT...pdf",
-    description: "HTML5, CSS3, and JavaScript fundamentals for building responsive websites.",
+    description: "HTML5, CSS3, and JavaScript fundamentals for building responsive modern web apps.",
     icon: "Globe"
   },
   {
@@ -298,7 +582,7 @@ export const certificationsData = [
     tag: "Infosys",
     category: "Infosys Springboard",
     fileUrl: "/certificates/6 INFOSYS SPRING CERT...pdf",
-    description: "Arrays, linked lists, trees, graphs, sorting, and searching algorithms.",
+    description: "Arrays, linked lists, trees, graphs, sorting algorithms, and complexity analysis.",
     icon: "GitFork"
   },
   {
@@ -479,7 +763,7 @@ export const certificationsData = [
   },
 
   // ═══════════════════════════════════════════════
-  // TCS iON — 7 Certificates + 6 Reports = 13
+  // TCS iON — 13 Credentials
   // ═══════════════════════════════════════════════
   {
     id: "tcs-ion-cert-1",
@@ -494,18 +778,18 @@ export const certificationsData = [
   },
   {
     id: "tcs-ion-cert-2",
-    title: "TCS iON — Communication Skills",
+    title: "TCS iON — Business Communication Skills",
     issuer: "TCS iON",
     score: "Certified",
     tag: "TCS iON",
     category: "TCS iON",
     fileUrl: "/certificates/TCS ION CERT-2.pdf",
-    description: "Business communication, presentation skills, and professional writing techniques.",
+    description: "Business communication, presentation skills, and corporate writing techniques.",
     icon: "MessageSquare"
   },
   {
     id: "tcs-ion-cert-3",
-    title: "TCS iON — IT Foundations",
+    title: "TCS iON — Information Technology Foundations",
     issuer: "TCS iON",
     score: "Certified",
     tag: "TCS iON",
@@ -516,7 +800,7 @@ export const certificationsData = [
   },
   {
     id: "tcs-ion-cert-4",
-    title: "TCS iON — Aptitude & Reasoning",
+    title: "TCS iON — Quantitative Aptitude & Reasoning",
     issuer: "TCS iON",
     score: "Certified",
     tag: "TCS iON",
@@ -527,7 +811,7 @@ export const certificationsData = [
   },
   {
     id: "tcs-ion-cert-5",
-    title: "TCS iON — Digital Marketing",
+    title: "TCS iON — Digital Marketing Strategy",
     issuer: "TCS iON",
     score: "Certified",
     tag: "TCS iON",
@@ -538,7 +822,7 @@ export const certificationsData = [
   },
   {
     id: "tcs-ion-cert-6",
-    title: "TCS iON — Business Analytics",
+    title: "TCS iON — Business Analytics & Data Insights",
     issuer: "TCS iON",
     score: "Certified",
     tag: "TCS iON",
@@ -549,7 +833,7 @@ export const certificationsData = [
   },
   {
     id: "tcs-ion-cert-7",
-    title: "TCS iON — Soft Skills Mastery",
+    title: "TCS iON — Professional Soft Skills Mastery",
     issuer: "TCS iON",
     score: "Certified",
     tag: "TCS iON",
@@ -559,8 +843,19 @@ export const certificationsData = [
     icon: "Users"
   },
   {
+    id: "tcs-ion-report-overall",
+    title: "TCS Comprehensive Evaluation & Competency Report",
+    issuer: "TCS iON",
+    score: "Evaluation Report",
+    tag: "TCS iON",
+    category: "TCS iON",
+    fileUrl: "/certificates/Gokulnath M report .pdf",
+    description: "Comprehensive skill audit report measuring technical, analytical, and professional competencies.",
+    icon: "FileText"
+  },
+  {
     id: "tcs-ion-report-2",
-    title: "TCS iON — Performance Report II",
+    title: "TCS iON — Performance Assessment Report II",
     issuer: "TCS iON",
     score: "Report",
     tag: "TCS iON",
@@ -571,7 +866,7 @@ export const certificationsData = [
   },
   {
     id: "tcs-ion-report-3",
-    title: "TCS iON — Performance Report III",
+    title: "TCS iON — Performance Assessment Report III",
     issuer: "TCS iON",
     score: "Report",
     tag: "TCS iON",
@@ -582,7 +877,7 @@ export const certificationsData = [
   },
   {
     id: "tcs-ion-report-4",
-    title: "TCS iON — Performance Report IV",
+    title: "TCS iON — Performance Assessment Report IV",
     issuer: "TCS iON",
     score: "Report",
     tag: "TCS iON",
@@ -593,7 +888,7 @@ export const certificationsData = [
   },
   {
     id: "tcs-ion-report-5",
-    title: "TCS iON — Performance Report V",
+    title: "TCS iON — Performance Assessment Report V",
     issuer: "TCS iON",
     score: "Report",
     tag: "TCS iON",
@@ -604,7 +899,7 @@ export const certificationsData = [
   },
   {
     id: "tcs-ion-report-6",
-    title: "TCS iON — Performance Report VI",
+    title: "TCS iON — Performance Assessment Report VI",
     issuer: "TCS iON",
     score: "Report",
     tag: "TCS iON",
@@ -613,79 +908,64 @@ export const certificationsData = [
     description: "Learning progress tracking and milestone achievement report.",
     icon: "FileText"
   },
+
+  // ═══════════════════════════════════════════════
+  // NPTEL & ACADEMICS — 5 Credentials
+  // ═══════════════════════════════════════════════
   {
-    id: "tcs-ion-report-7",
-    title: "TCS iON — Performance Report VII",
-    issuer: "TCS iON",
-    score: "Report",
-    tag: "TCS iON",
-    category: "TCS iON",
-    fileUrl: "/certificates/TCS ION REPORT  - 7.pdf",
-    description: "Final assessment summary with comprehensive skill evaluation.",
+    id: "nptel-hci-sem4",
+    title: "Human-Computer Interfaces — NPTEL Elite",
+    issuer: "IIT Guwahati via NPTEL",
+    score: "63% Elite",
+    tag: "NPTEL Elite",
+    category: "NPTEL & Academics",
+    fileUrl: "/certificates/NPTEL RESULT SEM-4.pdf",
+    description: "User-centric interface design principles, cognitive ergonomics, and accessibility frameworks.",
+    icon: "Monitor"
+  },
+  {
+    id: "nptel-iot-sem3",
+    title: "Introduction to Internet of Things — NPTEL Silver",
+    issuer: "NPTEL Elite Silver",
+    score: "80% Silver Elite",
+    tag: "NPTEL Silver",
+    category: "NPTEL & Academics",
+    fileUrl: "/certificates/NPTEL_RESULT_SEM 3.pdf",
+    description: "IoT system architectures, sensor networks, cloud integration, and hardware-software protocols.",
+    icon: "Cpu"
+  },
+  {
+    id: "nptel-hall-ticket",
+    title: "NPTEL National Exam Hall Ticket — Sem 4",
+    issuer: "NPTEL / SWAYAM",
+    score: "Exam Credential",
+    tag: "NPTEL",
+    category: "NPTEL & Academics",
+    fileUrl: "/certificates/NPTEL SEM 4 HALL TICKET.pdf",
+    description: "Official NPTEL examination hall ticket for Semester 4 national certification exam.",
     icon: "FileText"
   },
-
-  // ═══════════════════════════════════════════════
-  // GOOGLE — 3 Certificates
-  // ═══════════════════════════════════════════════
   {
-    id: "google-cert-1",
-    title: "Google Cloud Foundations",
-    issuer: "Google",
-    score: "Certified",
-    tag: "Google",
-    category: "Google",
-    fileUrl: "/certificates/GOOGLE CERT-1.pdf",
-    description: "Google Cloud Platform foundational architectures, data management, and security.",
-    icon: "Cloud"
+    id: "mat-cert-1",
+    title: "Mathematics Ramanujan Proficiency — Linear Algebra & Calculus",
+    issuer: "Ramanujan Math Society",
+    score: "Proficiency",
+    tag: "Academics",
+    category: "NPTEL & Academics",
+    fileUrl: "/certificates/mat cert 1.pdf",
+    description: "Advanced mathematical concepts, vector calculus, differential equations, and linear transformations.",
+    icon: "Calculator"
   },
   {
-    id: "google-cert-2",
-    title: "Google AI & Data Analytics",
-    issuer: "Google",
-    score: "Certified",
-    tag: "Google",
-    category: "Google",
-    fileUrl: "/certificates/GOOGLE CERT-2.pdf",
-    description: "Advanced Google AI, data pipeline construction, and cloud analytics.",
-    icon: "BrainCircuit"
-  },
-  {
-    id: "google-ai-pledge",
-    title: "AI Impact Pledge Badge",
-    issuer: "Google",
-    score: "Verified Badge",
-    tag: "Google",
-    category: "Google",
-    fileUrl: "/certificates/ai-impact-pledge-badge.pdf",
-    description: "AI ethics, responsible AI development, and societal impact commitment pledge.",
-    icon: "Award"
-  },
-
-  // ═══════════════════════════════════════════════
-  // MICROSOFT & LINKEDIN — 2 Certificates
-  // ═══════════════════════════════════════════════
-  {
-    id: "microsoft-genai",
-    title: "Career Essentials in Generative AI",
-    issuer: "Microsoft & LinkedIn",
-    score: "Professional Cert",
-    tag: "Microsoft",
-    category: "Microsoft & LinkedIn",
-    fileUrl: "/certificates/CertificateOfCompletion_Career Essentials in Generative AI by Microsoft and LinkedIn.pdf",
-    description: "Generative AI concepts, Large Language Models, prompt engineering, and ethical AI implementation.",
-    icon: "Sparkles"
-  },
-  {
-    id: "microsoft-azure-ai",
-    title: "Microsoft Azure AI Essentials",
-    issuer: "Microsoft & LinkedIn",
-    score: "Professional Cert",
-    tag: "Microsoft Azure",
-    category: "Microsoft & LinkedIn",
-    fileUrl: "/certificates/CertificateOfCompletion_Microsoft Azure AI Essentials Professional Certificate by Microsoft and LinkedIn.pdf",
-    description: "Cloud-native AI vision, speech, language, and predictive ML models on Azure.",
-    icon: "Cloud"
+    id: "mat-cert-2",
+    title: "Mathematics Ramanujan Proficiency — Statistics & Discrete Math",
+    issuer: "Ramanujan Math Society",
+    score: "Proficiency",
+    tag: "Academics",
+    category: "NPTEL & Academics",
+    fileUrl: "/certificates/mat cert 2.pdf",
+    description: "Probability theory, statistical inference, graph theory, and discrete mathematics for AI.",
+    icon: "Calculator"
   },
 
   // ═══════════════════════════════════════════════
@@ -726,7 +1006,7 @@ export const certificationsData = [
   },
   {
     id: "simplilearn-pers-1",
-    title: "Personal Development — Leadership",
+    title: "Personal Development — Leadership & Teamwork",
     issuer: "Simplilearn",
     score: "Certified",
     tag: "Simplilearn",
@@ -737,7 +1017,7 @@ export const certificationsData = [
   },
   {
     id: "simplilearn-pers-2",
-    title: "Personal Development — Communication",
+    title: "Personal Development — Professional Communication",
     issuer: "Simplilearn",
     score: "Certified",
     tag: "Simplilearn",
@@ -748,7 +1028,7 @@ export const certificationsData = [
   },
   {
     id: "simplilearn-pers-3",
-    title: "Personal Development — Problem Solving",
+    title: "Personal Development — Structured Problem Solving",
     issuer: "Simplilearn",
     score: "Certified",
     tag: "Simplilearn",
@@ -759,76 +1039,28 @@ export const certificationsData = [
   },
 
   // ═══════════════════════════════════════════════
-  // NPTEL & ACADEMICS — 5 Documents
-  // ═══════════════════════════════════════════════
-  {
-    id: "nptel-hci-sem4",
-    title: "Human-Computer Interfaces — NPTEL Elite",
-    issuer: "IIT Guwahati via NPTEL",
-    score: "63% Elite",
-    tag: "NPTEL Elite",
-    category: "NPTEL & Academics",
-    fileUrl: "/certificates/NPTEL RESULT SEM-4.pdf",
-    description: "User-centric interface design principles, cognitive ergonomics, and accessibility frameworks.",
-    icon: "Monitor"
-  },
-  {
-    id: "nptel-hall-ticket",
-    title: "NPTEL Exam Hall Ticket — Sem 4",
-    issuer: "NPTEL / SWAYAM",
-    score: "Exam Credential",
-    tag: "NPTEL",
-    category: "NPTEL & Academics",
-    fileUrl: "/certificates/NPTEL SEM 4 HALL TICKET.pdf",
-    description: "Official NPTEL examination hall ticket for Semester 4 certification exam.",
-    icon: "FileText"
-  },
-  {
-    id: "nptel-iot-sem3",
-    title: "Introduction to Internet of Things — NPTEL Silver",
-    issuer: "NPTEL Elite Silver",
-    score: "80% Silver Elite",
-    tag: "NPTEL Silver",
-    category: "NPTEL & Academics",
-    fileUrl: "/certificates/NPTEL_RESULT_SEM 3.pdf",
-    description: "IoT system architectures, sensor networks, cloud integration, and hardware-software protocols.",
-    icon: "Cpu"
-  },
-  {
-    id: "mat-cert-1",
-    title: "Mathematics Proficiency — Certificate I",
-    issuer: "Academic Institution",
-    score: "Certified",
-    tag: "Academics",
-    category: "NPTEL & Academics",
-    fileUrl: "/certificates/mat cert 1.pdf",
-    description: "Advanced mathematical concepts, linear algebra, and applied calculus proficiency.",
-    icon: "Calculator"
-  },
-  {
-    id: "mat-cert-2",
-    title: "Mathematics Proficiency — Certificate II",
-    issuer: "Academic Institution",
-    score: "Certified",
-    tag: "Academics",
-    category: "NPTEL & Academics",
-    fileUrl: "/certificates/mat cert 2.pdf",
-    description: "Probability, statistics, and discrete mathematics for engineering applications.",
-    icon: "Calculator"
-  },
-
-  // ═══════════════════════════════════════════════
-  // IEEE — 1 Certificate
+  // IEEE & BADGES — 2 Credentials
   // ═══════════════════════════════════════════════
   {
     id: "ieee-cert",
-    title: "IEEE Technical Certification",
+    title: "IEEE Technical & Engineering Certification",
     issuer: "IEEE",
     score: "Certified",
     tag: "IEEE",
-    category: "IEEE",
+    category: "IEEE & Badges",
     fileUrl: "/certificates/IEEE CERT...pdf",
     description: "IEEE engineering standards, computing paradigms, and technical research methodologies.",
+    icon: "Award"
+  },
+  {
+    id: "ai-impact-pledge-badge",
+    title: "AI Impact & Responsible AI Pledge Badge",
+    issuer: "IEEE & Google",
+    score: "Verified Badge",
+    tag: "IEEE / Google",
+    category: "IEEE & Badges",
+    fileUrl: "/certificates/ai-impact-pledge-badge.pdf",
+    description: "Ethical AI development pledge certifying commitment to fair, unbiased, and safe AI applications.",
     icon: "Award"
   },
 
