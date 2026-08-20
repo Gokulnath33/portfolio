@@ -11,6 +11,7 @@ import Resume from './components/Resume';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackgroundMusic from './components/BackgroundMusic';
+import CursorFireTrail from './components/CursorFireTrail';
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
@@ -30,6 +31,9 @@ export default function App() {
     <div className="relative min-h-screen selection:bg-[var(--accent-cyan)] selection:text-black">
       {/* Colorful Interactive Background */}
       <DynamicBackground theme={theme} />
+
+      {/* Cursor Fire Trail Effect */}
+      <CursorFireTrail />
 
       {/* Foreground Content */}
       <div className="relative z-10">

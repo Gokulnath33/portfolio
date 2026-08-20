@@ -11,56 +11,56 @@
 
 :root {
   /* === Core Palette — Ultra Deep Cosmic Dark === */
-  --bg-primary:      #030712;
-  --bg-secondary:    #0a0f24;
-  --bg-card:         rgba(12, 18, 42, 0.78);
-  --bg-card-hover:   rgba(18, 28, 65, 0.95);
-  --bg-glass:        rgba(8, 14, 36, 0.72);
+  --bg-primary:      #020617;
+  --bg-secondary:    #0c1230;
+  --bg-card:         rgba(15, 23, 55, 0.82);
+  --bg-card-hover:   rgba(25, 40, 85, 0.95);
+  --bg-glass:        rgba(10, 18, 48, 0.78);
 
-  --text-main:  #f8fafc;
-  --text-muted: #94a3b8;
-  --text-dim:   #64748b;
+  --text-main:  #ffffff;
+  --text-muted: #a5b4fc;
+  --text-dim:   #818cf8;
 
-  --border-color: rgba(255, 255, 255, 0.10);
-  --border-glow:  rgba(139, 92, 246, 0.50);
+  --border-color: rgba(167, 139, 250, 0.20);
+  --border-glow:  rgba(167, 139, 250, 0.65);
 
-  /* === Accent Colors — Vivid Neon === */
-  --accent-cyan:    #22d3ee;
-  --accent-indigo:  #818cf8;
-  --accent-violet:  #a78bfa;
-  --accent-pink:    #f472b6;
-  --accent-emerald: #34d399;
-  --accent-amber:   #fbbf24;
-  --accent-orange:  #fb923c;
-  --accent-red:     #f87171;
-  --accent-blue:    #60a5fa;
+  /* === Accent Colors — Ultra Vivid Neon === */
+  --accent-cyan:    #00f0ff;
+  --accent-indigo:  #6366f1;
+  --accent-violet:  #a855f7;
+  --accent-pink:    #ff0080;
+  --accent-emerald: #00ff88;
+  --accent-amber:   #ffdd00;
+  --accent-orange:  #ff6600;
+  --accent-red:     #ff0044;
+  --accent-blue:    #0066ff;
 
-  /* === Section Theme Colors (Vivid per section) === */
-  --hero-c1: #22d3ee; --hero-c2: #818cf8; --hero-c3: #a78bfa;
-  --about-c1: #fbbf24; --about-c2: #f472b6; --about-c3: #fb923c;
-  --skills-c1: #34d399; --skills-c2: #22d3ee; --skills-c3: #60a5fa;
-  --projects-c1: #a78bfa; --projects-c2: #f472b6; --projects-c3: #818cf8;
-  --exp-c1: #fb923c; --exp-c2: #f87171; --exp-c3: #fbbf24;
-  --certs-c1: #22d3ee; --certs-c2: #34d399; --certs-c3: #60a5fa;
-  --resume-c1: #22d3ee; --resume-c2: #818cf8; --resume-c3: #a78bfa;
-  --contact-c1: #f472b6; --contact-c2: #a78bfa; --contact-c3: #818cf8;
+  /* === Section Theme Colors (Ultra Vivid per section) === */
+  --hero-c1: #00f0ff; --hero-c2: #6366f1; --hero-c3: #a855f7;
+  --about-c1: #ffdd00; --about-c2: #ff0080; --about-c3: #ff6600;
+  --skills-c1: #00ff88; --skills-c2: #00f0ff; --skills-c3: #0066ff;
+  --projects-c1: #a855f7; --projects-c2: #ff0080; --projects-c3: #6366f1;
+  --exp-c1: #ff6600; --exp-c2: #ff0044; --exp-c3: #ffdd00;
+  --certs-c1: #00f0ff; --certs-c2: #00ff88; --certs-c3: #0066ff;
+  --resume-c1: #00f0ff; --resume-c2: #6366f1; --resume-c3: #a855f7;
+  --contact-c1: #ff0080; --contact-c2: #a855f7; --contact-c3: #6366f1;
 
   /* === Gradients — Ultra Vivid === */
-  --gradient-brand:   linear-gradient(135deg, #22d3ee 0%, #818cf8 50%, #a78bfa 100%);
-  --gradient-vibrant: linear-gradient(135deg, #f472b6 0%, #a78bfa 50%, #60a5fa 100%);
-  --gradient-emerald: linear-gradient(135deg, #34d399 0%, #22d3ee 100%);
-  --gradient-amber:   linear-gradient(135deg, #fbbf24 0%, #f472b6 100%);
-  --gradient-fire:    linear-gradient(135deg, #f87171 0%, #fb923c 50%, #fbbf24 100%);
-  --gradient-ocean:   linear-gradient(135deg, #22d3ee 0%, #60a5fa 50%, #a78bfa 100%);
-  --gradient-glass:   linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+  --gradient-brand:   linear-gradient(135deg, #00f0ff 0%, #6366f1 50%, #a855f7 100%);
+  --gradient-vibrant: linear-gradient(135deg, #ff0080 0%, #a855f7 50%, #0066ff 100%);
+  --gradient-emerald: linear-gradient(135deg, #00ff88 0%, #00f0ff 100%);
+  --gradient-amber:   linear-gradient(135deg, #ffdd00 0%, #ff0080 100%);
+  --gradient-fire:    linear-gradient(135deg, #ff0044 0%, #ff6600 50%, #ffdd00 100%);
+  --gradient-ocean:   linear-gradient(135deg, #00f0ff 0%, #0066ff 50%, #a855f7 100%);
+  --gradient-glass:   linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
 
   /* === Shadows — Enhanced Glow === */
-  --shadow-glow:    0 10px 40px -10px rgba(129,140,248,0.5);
-  --shadow-vibrant: 0 15px 45px -5px rgba(244,114,182,0.4);
-  --shadow-emerald: 0 10px 40px -10px rgba(52,211,153,0.5);
-  --shadow-amber:   0 10px 40px -10px rgba(251,191,36,0.5);
-  --shadow-fire:    0 10px 40px -10px rgba(248,113,113,0.5);
-  --shadow-cyan:    0 10px 40px -10px rgba(34,211,238,0.5);
+  --shadow-glow:    0 10px 50px -10px rgba(99,102,241,0.7);
+  --shadow-vibrant: 0 15px 55px -5px rgba(255,0,128,0.6);
+  --shadow-emerald: 0 10px 50px -10px rgba(0,255,136,0.7);
+  --shadow-amber:   0 10px 50px -10px rgba(255,221,0,0.7);
+  --shadow-fire:    0 10px 50px -10px rgba(255,0,68,0.7);
+  --shadow-cyan:    0 10px 50px -10px rgba(0,240,255,0.7);
 
   /* === Radii & Fonts === */
   --radius-sm:   8px;
@@ -171,64 +171,64 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Hero — Cosmic Cyan/Indigo Aurora */
 #home {
   background: radial-gradient(ellipse 120% 80% at 50% 10%,
-    rgba(34,211,238,0.12) 0%,
-    rgba(129,140,248,0.10) 40%,
+    rgba(0,240,255,0.15) 0%,
+    rgba(99,102,241,0.12) 40%,
     transparent 70%);
 }
 
 /* About — Warm Amber/Pink Sunset */
 #about {
   background: radial-gradient(ellipse 130% 90% at 20% 50%,
-    rgba(251,191,36,0.11) 0%,
-    rgba(244,114,182,0.09) 45%,
+    rgba(255,221,0,0.14) 0%,
+    rgba(255,0,128,0.11) 45%,
     transparent 70%);
 }
 
 /* Skills — Emerald/Cyan Forest */
 #skills {
   background: radial-gradient(ellipse 130% 90% at 80% 50%,
-    rgba(52,211,153,0.12) 0%,
-    rgba(96,165,250,0.10) 45%,
+    rgba(0,255,136,0.15) 0%,
+    rgba(0,102,255,0.12) 45%,
     transparent 70%);
 }
 
 /* Projects — Violet/Pink Nebula */
 #projects {
   background: radial-gradient(ellipse 120% 80% at 50% 30%,
-    rgba(167,139,250,0.14) 0%,
-    rgba(244,114,182,0.10) 45%,
+    rgba(168,85,247,0.18) 0%,
+    rgba(255,0,128,0.13) 45%,
     transparent 70%);
 }
 
 /* Experience — Fire/Orange Inferno */
 #experience {
   background: radial-gradient(ellipse 130% 90% at 30% 60%,
-    rgba(251,146,60,0.12) 0%,
-    rgba(248,113,113,0.09) 45%,
+    rgba(255,102,0,0.15) 0%,
+    rgba(255,0,68,0.11) 45%,
     transparent 70%);
 }
 
 /* Certificates — Teal/Emerald Ocean */
 #certificates {
   background: radial-gradient(ellipse 130% 90% at 70% 40%,
-    rgba(34,211,238,0.12) 0%,
-    rgba(52,211,153,0.10) 45%,
+    rgba(0,240,255,0.15) 0%,
+    rgba(0,255,136,0.12) 45%,
     transparent 70%);
 }
 
 /* Resume — Cyan/Indigo Crystal */
 #resume {
   background: radial-gradient(ellipse 130% 90% at 50% 50%,
-    rgba(34,211,238,0.11) 0%,
-    rgba(129,140,248,0.09) 45%,
+    rgba(0,240,255,0.14) 0%,
+    rgba(99,102,241,0.11) 45%,
     transparent 70%);
 }
 
 /* Contact — Pink/Violet Romance */
 #contact {
   background: radial-gradient(ellipse 120% 80% at 50% 60%,
-    rgba(244,114,182,0.13) 0%,
-    rgba(167,139,250,0.10) 45%,
+    rgba(255,0,128,0.16) 0%,
+    rgba(168,85,247,0.12) 45%,
     transparent 70%);
 }
 
@@ -419,31 +419,48 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   pointer-events: none;
 }
 .glass-card:hover::before { opacity: 1; }
+.glass-card::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  animation: sparkleRotate 3s linear infinite;
+}
+.glass-card:hover::after { opacity: 1; }
 .glass-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-glow);
-  box-shadow: var(--shadow-glow), 0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-  transform: translateY(-6px);
+  box-shadow: var(--shadow-glow), 0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+  transform: translateY(-8px) scale(1.02);
+}
+
+@keyframes sparkleRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* ── Section-tinted glass cards ─────────────────────────────────────────── */
-.glass-card-cyan    { border-color: rgba(6,182,212,0.2); }
-.glass-card-cyan:hover    { border-color: rgba(6,182,212,0.5); box-shadow: 0 0 30px rgba(6,182,212,0.15), 0 20px 60px rgba(0,0,0,0.25); }
+.glass-card-cyan    { border-color: rgba(0,240,255,0.3); }
+.glass-card-cyan:hover    { border-color: rgba(0,240,255,0.7); box-shadow: 0 0 40px rgba(0,240,255,0.3), 0 20px 60px rgba(0,0,0,0.25); }
 
-.glass-card-violet  { border-color: rgba(139,92,246,0.2); }
-.glass-card-violet:hover  { border-color: rgba(139,92,246,0.5); box-shadow: 0 0 30px rgba(139,92,246,0.15), 0 20px 60px rgba(0,0,0,0.25); }
+.glass-card-violet  { border-color: rgba(168,85,247,0.3); }
+.glass-card-violet:hover  { border-color: rgba(168,85,247,0.7); box-shadow: 0 0 40px rgba(168,85,247,0.3), 0 20px 60px rgba(0,0,0,0.25); }
 
-.glass-card-pink    { border-color: rgba(236,72,153,0.2); }
-.glass-card-pink:hover    { border-color: rgba(236,72,153,0.5); box-shadow: 0 0 30px rgba(236,72,153,0.15), 0 20px 60px rgba(0,0,0,0.25); }
+.glass-card-pink    { border-color: rgba(255,0,128,0.3); }
+.glass-card-pink:hover    { border-color: rgba(255,0,128,0.7); box-shadow: 0 0 40px rgba(255,0,128,0.3), 0 20px 60px rgba(0,0,0,0.25); }
 
-.glass-card-emerald { border-color: rgba(16,185,129,0.2); }
-.glass-card-emerald:hover { border-color: rgba(16,185,129,0.5); box-shadow: 0 0 30px rgba(16,185,129,0.15), 0 20px 60px rgba(0,0,0,0.25); }
+.glass-card-emerald { border-color: rgba(0,255,136,0.3); }
+.glass-card-emerald:hover { border-color: rgba(0,255,136,0.7); box-shadow: 0 0 40px rgba(0,255,136,0.3), 0 20px 60px rgba(0,0,0,0.25); }
 
-.glass-card-amber   { border-color: rgba(245,158,11,0.2); }
-.glass-card-amber:hover   { border-color: rgba(245,158,11,0.5); box-shadow: 0 0 30px rgba(245,158,11,0.15), 0 20px 60px rgba(0,0,0,0.25); }
+.glass-card-amber   { border-color: rgba(255,221,0,0.3); }
+.glass-card-amber:hover   { border-color: rgba(255,221,0,0.7); box-shadow: 0 0 40px rgba(255,221,0,0.3), 0 20px 60px rgba(0,0,0,0.25); }
 
-.glass-card-fire    { border-color: rgba(249,115,22,0.2); }
-.glass-card-fire:hover    { border-color: rgba(249,115,22,0.5); box-shadow: 0 0 30px rgba(249,115,22,0.15), 0 20px 60px rgba(0,0,0,0.25); }
+.glass-card-fire    { border-color: rgba(255,102,0,0.3); }
+.glass-card-fire:hover    { border-color: rgba(255,102,0,0.7); box-shadow: 0 0 40px rgba(255,102,0,0.3), 0 20px 60px rgba(0,0,0,0.25); }
 
 .glass-pill {
   background: rgba(255,255,255,0.07);

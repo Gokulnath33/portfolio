@@ -2,14 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 
 /* ─── Section color palettes ─────────────────────────────────────────────── */
 const SECTION_PALETTES = {
-  home:         { orb1: '#22d3ee', orb2: '#818cf8', orb3: '#a78bfa', star: '#a5f3fc' },
-  about:        { orb1: '#fbbf24', orb2: '#f472b6', orb3: '#fb923c', star: '#fde68a' },
-  skills:       { orb1: '#34d399', orb2: '#22d3ee', orb3: '#60a5fa', star: '#6ee7b7' },
-  projects:     { orb1: '#a78bfa', orb2: '#f472b6', orb3: '#818cf8', star: '#ddd6fe' },
-  experience:   { orb1: '#fb923c', orb2: '#f87171', orb3: '#fbbf24', star: '#fed7aa' },
-  certificates: { orb1: '#22d3ee', orb2: '#34d399', orb3: '#60a5fa', star: '#99f6e4' },
-  resume:       { orb1: '#22d3ee', orb2: '#818cf8', orb3: '#a78bfa', star: '#a5f3fc' },
-  contact:      { orb1: '#f472b6', orb2: '#a78bfa', orb3: '#818cf8', star: '#fbcfe8' },
+  home:         { orb1: '#00f0ff', orb2: '#6366f1', orb3: '#a855f7', star: '#e0f2fe' },
+  about:        { orb1: '#ffdd00', orb2: '#ff0080', orb3: '#ff6600', star: '#fef08a' },
+  skills:       { orb1: '#00ff88', orb2: '#00f0ff', orb3: '#0066ff', star: '#a7f3d0' },
+  projects:     { orb1: '#a855f7', orb2: '#ff0080', orb3: '#6366f1', star: '#e9d5ff' },
+  experience:   { orb1: '#ff6600', orb2: '#ff0044', orb3: '#ffdd00', star: '#fed7aa' },
+  certificates: { orb1: '#00f0ff', orb2: '#00ff88', orb3: '#0066ff', star: '#a7f3d0' },
+  resume:       { orb1: '#00f0ff', orb2: '#6366f1', orb3: '#a855f7', star: '#e0f2fe' },
+  contact:      { orb1: '#ff0080', orb2: '#a855f7', orb3: '#6366f1', star: '#fbcfe8' },
 };
 
 const DEFAULT_PALETTE = SECTION_PALETTES.home;
