@@ -1,0 +1,1 @@
+Root of a single-page React portfolio that composes the UI components, static certificate assets, and shared build/theme configuration into a deployable Vite application.

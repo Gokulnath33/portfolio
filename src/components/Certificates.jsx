@@ -22,95 +22,95 @@ import { certificationsData, personalInfo } from '../data/portfolioData';
 /* ───────── issuer color map ───────── */
 const ISSUER_COLORS = {
   'HackerRank': {
-    gradient: 'linear-gradient(135deg, #2ec4b6, #00b4d8, #00f5d4)',
-    bg: 'rgba(46,196,182,0.15)',
-    border: 'rgba(46,196,182,0.4)',
-    text: '#2ec4b6',
-    glow: '0 0 28px rgba(46,196,182,0.4)'
+    gradient: 'linear-gradient(135deg, #34d399, #22d3ee, #6ee7b7)',
+    bg: 'rgba(52,211,153,0.15)',
+    border: 'rgba(52,211,153,0.4)',
+    text: '#34d399',
+    glow: '0 0 28px rgba(52,211,153,0.4)'
   },
   'HCL GUVI': {
-    gradient: 'linear-gradient(135deg, #00b4d8, #0077b6, #90e0ef)',
-    bg: 'rgba(0,180,216,0.15)',
-    border: 'rgba(0,180,216,0.4)',
-    text: '#38bdf8',
-    glow: '0 0 28px rgba(0,180,216,0.4)'
+    gradient: 'linear-gradient(135deg, #22d3ee, #60a5fa, #99f6e4)',
+    bg: 'rgba(34,211,238,0.15)',
+    border: 'rgba(34,211,238,0.4)',
+    text: '#22d3ee',
+    glow: '0 0 28px rgba(34,211,238,0.4)'
   },
   'AICTE Parakh': {
-    gradient: 'linear-gradient(135deg, #f59e0b, #d97706, #fbbf24)',
-    bg: 'rgba(245,158,11,0.15)',
-    border: 'rgba(245,158,11,0.4)',
+    gradient: 'linear-gradient(135deg, #fbbf24, #fb923c, #fde68a)',
+    bg: 'rgba(251,191,36,0.15)',
+    border: 'rgba(251,191,36,0.4)',
     text: '#fbbf24',
-    glow: '0 0 28px rgba(245,158,11,0.4)'
+    glow: '0 0 28px rgba(251,191,36,0.4)'
   },
   'LinkedIn & Microsoft': {
-    gradient: 'linear-gradient(135deg, #0a66c2, #0077b5, #0284c7)',
-    bg: 'rgba(10,102,194,0.15)',
-    border: 'rgba(10,102,194,0.4)',
-    text: '#38bdf8',
-    glow: '0 0 28px rgba(10,102,194,0.4)'
+    gradient: 'linear-gradient(135deg, #0a66c2, #60a5fa, #93c5fd)',
+    bg: 'rgba(96,165,250,0.15)',
+    border: 'rgba(96,165,250,0.4)',
+    text: '#60a5fa',
+    glow: '0 0 28px rgba(96,165,250,0.4)'
   },
   'Microsoft & LinkedIn': {
-    gradient: 'linear-gradient(135deg, #0a66c2, #0077b5, #0284c7)',
-    bg: 'rgba(10,102,194,0.15)',
-    border: 'rgba(10,102,194,0.4)',
-    text: '#38bdf8',
-    glow: '0 0 28px rgba(10,102,194,0.4)'
+    gradient: 'linear-gradient(135deg, #0a66c2, #60a5fa, #93c5fd)',
+    bg: 'rgba(96,165,250,0.15)',
+    border: 'rgba(96,165,250,0.4)',
+    text: '#60a5fa',
+    glow: '0 0 28px rgba(96,165,250,0.4)'
   },
   'Google': {
-    gradient: 'linear-gradient(135deg, #ea4335, #fbbc05, #34a853, #4285f4)',
-    bg: 'rgba(234,67,53,0.15)',
-    border: 'rgba(66,133,244,0.4)',
+    gradient: 'linear-gradient(135deg, #f87171, #fbbf24, #34d399, #60a5fa)',
+    bg: 'rgba(248,113,113,0.15)',
+    border: 'rgba(96,165,250,0.4)',
     text: '#60a5fa',
-    glow: '0 0 28px rgba(66,133,244,0.4)'
+    glow: '0 0 28px rgba(96,165,250,0.4)'
   },
   'Infosys Springboard': {
-    gradient: 'linear-gradient(135deg, #007acc, #005999, #38bdf8)',
-    bg: 'rgba(0,122,204,0.15)',
-    border: 'rgba(0,122,204,0.4)',
+    gradient: 'linear-gradient(135deg, #60a5fa, #3b82f6, #93c5fd)',
+    bg: 'rgba(96,165,250,0.15)',
+    border: 'rgba(96,165,250,0.4)',
     text: '#60a5fa',
-    glow: '0 0 28px rgba(0,122,204,0.4)'
+    glow: '0 0 28px rgba(96,165,250,0.4)'
   },
   'TCS iON': {
-    gradient: 'linear-gradient(135deg, #8b5cf6, #6d28d9, #c084fc)',
-    bg: 'rgba(139,92,246,0.15)',
-    border: 'rgba(139,92,246,0.4)',
+    gradient: 'linear-gradient(135deg, #a78bfa, #8b5cf6, #c4b5fd)',
+    bg: 'rgba(167,139,250,0.15)',
+    border: 'rgba(167,139,250,0.4)',
     text: '#a78bfa',
-    glow: '0 0 28px rgba(139,92,246,0.4)'
+    glow: '0 0 28px rgba(167,139,250,0.4)'
   },
   'Simplilearn': {
-    gradient: 'linear-gradient(135deg, #ec4899, #be185d, #f472b6)',
-    bg: 'rgba(236,72,153,0.15)',
-    border: 'rgba(236,72,153,0.4)',
+    gradient: 'linear-gradient(135deg, #f472b6, #ec4899, #fbcfe8)',
+    bg: 'rgba(244,114,182,0.15)',
+    border: 'rgba(244,114,182,0.4)',
     text: '#f472b6',
-    glow: '0 0 28px rgba(236,72,153,0.4)'
+    glow: '0 0 28px rgba(244,114,182,0.4)'
   },
   'NPTEL & Academics': {
-    gradient: 'linear-gradient(135deg, #10b981, #059669, #34d399)',
-    bg: 'rgba(16,185,129,0.15)',
-    border: 'rgba(16,185,129,0.4)',
+    gradient: 'linear-gradient(135deg, #34d399, #10b981, #6ee7b7)',
+    bg: 'rgba(52,211,153,0.15)',
+    border: 'rgba(52,211,153,0.4)',
     text: '#34d399',
-    glow: '0 0 28px rgba(16,185,129,0.4)'
+    glow: '0 0 28px rgba(52,211,153,0.4)'
   },
   'IEEE & Badges': {
-    gradient: 'linear-gradient(135deg, #f97316, #ea580c, #fb923c)',
-    bg: 'rgba(249,115,22,0.15)',
-    border: 'rgba(249,115,22,0.4)',
+    gradient: 'linear-gradient(135deg, #fb923c, #f97316, #fdba74)',
+    bg: 'rgba(251,146,60,0.15)',
+    border: 'rgba(251,146,60,0.4)',
     text: '#fb923c',
-    glow: '0 0 28px rgba(249,115,22,0.4)'
+    glow: '0 0 28px rgba(251,146,60,0.4)'
   },
   'IEEE': {
-    gradient: 'linear-gradient(135deg, #f97316, #ea580c, #fb923c)',
-    bg: 'rgba(249,115,22,0.15)',
-    border: 'rgba(249,115,22,0.4)',
+    gradient: 'linear-gradient(135deg, #fb923c, #f97316, #fdba74)',
+    bg: 'rgba(251,146,60,0.15)',
+    border: 'rgba(251,146,60,0.4)',
     text: '#fb923c',
-    glow: '0 0 28px rgba(249,115,22,0.4)'
+    glow: '0 0 28px rgba(251,146,60,0.4)'
   },
   'IIT Bombay': {
-    gradient: 'linear-gradient(135deg, #eab308, #ca8a04, #facc15)',
-    bg: 'rgba(234,179,8,0.15)',
-    border: 'rgba(234,179,8,0.4)',
-    text: '#facc15',
-    glow: '0 0 28px rgba(234,179,8,0.4)'
+    gradient: 'linear-gradient(135deg, #fbbf24, #f59e0b, #fde68a)',
+    bg: 'rgba(251,191,36,0.15)',
+    border: 'rgba(251,191,36,0.4)',
+    text: '#fbbf24',
+    glow: '0 0 28px rgba(251,191,36,0.4)'
   }
 };
 

@@ -7,6 +7,12 @@
 - [App.jsx](file://src/App.jsx)
 </cite>
 
+## Update Summary
+**Changes Made**
+- Updated Category Filter Bar Layout section to reflect enhanced responsive design
+- Added details about flex-wrap implementation and mobile optimization
+- Enhanced filtering section with new layout characteristics
+
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Project Structure](#project-structure)
@@ -113,9 +119,9 @@ Examples of categories present in the dataset include HackerRank, HCL GUVI, AICT
 - [portfolioData.js:275-1123](file://src/data/portfolioData.js#L275-L1123)
 
 ### Category-Based Filtering and Search
-- Categories: Computed using a map over the dataset to count occurrences per category; an “All” option shows the entire set.
+- Categories: Computed using a map over the dataset to count occurrences per category; an "All" option shows the entire set.
 - Filtering logic: Combines category selection with a free-text search across title, issuer, and description fields.
-- UI: Horizontal scrollable filter bar with badges showing counts; search input with placeholder guidance.
+- UI: **Enhanced** Responsive filter bar with flex-wrap layout and centered alignment for improved mobile responsiveness. The filter bar now uses `flex flex-wrap items-center justify-center gap-2` classes to ensure optimal display across all screen sizes, eliminating horizontal scrolling issues while maintaining visual hierarchy.
 
 ```mermaid
 flowchart TD
@@ -132,6 +138,8 @@ UserAction --> |Click card| OpenViewer["Open viewer modal"]
 OpenViewer --> End(["Display preview"])
 ```
 
+**Updated** The category filter bar now features a responsive flex-wrap layout that automatically adjusts to different screen sizes, providing better user experience on mobile devices while maintaining the same functionality.
+
 **Diagram sources**
 - [Certificates.jsx:149-171](file://src/components/Certificates.jsx#L149-L171)
 - [Certificates.jsx:311-346](file://src/components/Certificates.jsx#L311-L346)
@@ -147,7 +155,7 @@ OpenViewer --> End(["Display preview"])
   - Tag and score badges
   - Title and issuer
   - Description snippet
-  - “View Certificate” call-to-action
+  - "View Certificate" call-to-action
 - Interactions:
   - 3D tilt effect on mouse move for visual depth
   - IntersectionObserver-driven fade/slide-in animation when cards enter viewport
@@ -242,8 +250,10 @@ Guidelines:
 
 ### Organizing by Categories
 - Categories are computed from the dataset; ensure each certificate has a meaningful category field.
-- The filter bar automatically lists all categories with counts; users can select a specific category to narrow results.
+- The **enhanced** filter bar automatically lists all categories with counts using a responsive flex-wrap layout; users can select a specific category to narrow results.
 - For large datasets, consider grouping related providers into broader categories to simplify navigation.
+
+**Updated** The filter bar now provides better mobile responsiveness through its flex-wrap implementation, ensuring all category buttons remain accessible without horizontal scrolling.
 
 **Section sources**
 - [Certificates.jsx:149-159](file://src/components/Certificates.jsx#L149-L159)
@@ -253,6 +263,7 @@ Guidelines:
 - Grid responsiveness is controlled via Tailwind classes; adjust breakpoints to change columns per screen size.
 - Card styling uses CSS variables and gradients tied to category colors; modify the color mapping to rebrand or emphasize certain issuers.
 - Animations and transitions can be tuned by adjusting thresholds and delays in the observer and transform styles.
+- **Enhanced** Category filter bar customization: The filter bar now uses flex-wrap with centered alignment, making it easier to customize spacing, alignment, and responsive behavior.
 
 **Section sources**
 - [Certificates.jsx:348-450](file://src/components/Certificates.jsx#L348-L450)
@@ -289,6 +300,7 @@ Certs --> Styles["Tailwind CSS"]
 - Conditional rendering: Viewer modal renders only when a certificate is selected, minimizing overhead.
 - File types: Images are rendered directly; PDFs are embedded via iframe. For very large PDFs, consider lazy loading or thumbnail previews to improve perceived performance.
 - Bundle downloads: Provide a pre-built zip to reduce server load during individual downloads.
+- **Enhanced** Mobile performance: The flex-wrap layout eliminates horizontal scrolling issues, improving touch interaction performance on mobile devices.
 
 Recommendations:
 - Implement virtualized lists if the number of certificates grows significantly beyond current scale.
@@ -310,6 +322,7 @@ Common issues and resolutions:
 - Performance lag with many certificates:
   - Reduce initial render by implementing pagination or virtualization
   - Optimize images and compress PDFs where possible
+- **Mobile layout issues**: If category buttons appear cramped on mobile devices, verify that the flex-wrap container is properly configured with adequate gap spacing.
 
 **Section sources**
 - [Certificates.jsx:452-459](file://src/components/Certificates.jsx#L452-L459)
@@ -317,7 +330,7 @@ Common issues and resolutions:
 - [Certificates.jsx:461-471](file://src/components/Certificates.jsx#L461-L471)
 
 ## Conclusion
-The Certificates management system provides a robust, user-friendly interface for browsing, filtering, and downloading a diverse collection of credentials. It leverages efficient data processing, responsive design, and interactive features to enhance the verification workflow. With clear data organization and extensible UI patterns, it supports easy addition of new certificates and customization of layout and branding.
+The Certificates management system provides a robust, user-friendly interface for browsing, filtering, and downloading a diverse collection of credentials. With the recent enhancement to the category filter bar layout using flex-wrap and centered alignment, the system now offers improved mobile responsiveness and visual presentation. It leverages efficient data processing, responsive design, and interactive features to enhance the verification workflow. With clear data organization and extensible UI patterns, it supports easy addition of new certificates and customization of layout and branding.
 
 [No sources needed since this section summarizes without analyzing specific files]
 
@@ -340,7 +353,7 @@ The Certificates management system provides a robust, user-friendly interface fo
 #### Verifying a Certificate
 - Steps:
   - Locate the certificate in the gallery
-  - Click “View Certificate” to open the modal
+  - Click "View Certificate" to open the modal
   - Review the embedded content or download/open in a new tab
   - Validate issuer, title, and score against expectations
 
@@ -349,9 +362,34 @@ The Certificates management system provides a robust, user-friendly interface fo
 
 #### Downloading All Certificates
 - Steps:
-  - Click the “Download All” button
+  - Click the "Download All" button
   - Save the zip archive to your device
   - Extract and verify contents as needed
 
 **Section sources**
 - [Certificates.jsx:461-471](file://src/components/Certificates.jsx#L461-L471)
+
+### Enhanced Category Filter Bar Implementation
+
+The category filter bar has been enhanced with modern responsive design principles:
+
+**Layout Features:**
+- Flex-wrap container that automatically wraps to multiple lines on smaller screens
+- Centered alignment for balanced visual presentation
+- Consistent spacing with gap utility classes
+- Shrink-0 property prevents button compression on narrow screens
+- Touch-friendly sizing for mobile interactions
+
+**Responsive Behavior:**
+- Desktop: Buttons display in a single row with proper spacing
+- Tablet: Buttons wrap naturally to accommodate screen width
+- Mobile: Multiple rows maintain readability and accessibility
+
+**Visual Enhancements:**
+- Active states with gradient backgrounds and glow effects
+- Count badges showing certificate quantities per category
+- Smooth transitions between active and inactive states
+- Consistent typography and spacing throughout
+
+**Section sources**
+- [Certificates.jsx:311-346](file://src/components/Certificates.jsx#L311-L346)

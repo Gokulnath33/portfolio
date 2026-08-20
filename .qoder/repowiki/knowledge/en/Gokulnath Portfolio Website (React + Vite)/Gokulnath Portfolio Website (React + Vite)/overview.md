@@ -1,1 +1,0 @@
-A single-page React portfolio website showcasing Gokulnath M's AI & Data Science background, projects, certifications, and contact form with dynamic theming and interactive backgrounds.

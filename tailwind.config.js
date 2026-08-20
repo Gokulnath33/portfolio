@@ -9,12 +9,12 @@ export default {
     extend: {
       colors: {
         brand: {
-          cyan: '#06b6d4',
-          indigo: '#6366f1',
-          violet: '#8b5cf6',
-          pink: '#ec4899',
-          emerald: '#10b981',
-          amber: '#f59e0b',
+          cyan: '#22d3ee',
+          indigo: '#818cf8',
+          violet: '#a78bfa',
+          pink: '#f472b6',
+          emerald: '#34d399',
+          amber: '#fbbf24',
         }
       },
       fontFamily: {

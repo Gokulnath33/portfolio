@@ -6,5 +6,4 @@ scope:
     - CERT/
 source_files: []
 depends_on: []
-related_to:
-    - path: portfolio_app
+related_to: []
