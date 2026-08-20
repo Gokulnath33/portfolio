@@ -309,7 +309,7 @@ export default function Certificates() {
         </div>
 
         {/* ═══ Category Filter Bar ═══ */}
-        <div className="flex items-center gap-2 mb-10 overflow-x-auto pb-3 scrollbar-hide">
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
           <Filter className="w-4 h-4 text-[var(--text-dim)] shrink-0" />
           {categories.map(cat => {
             const isActive = activeCategory === cat.name;

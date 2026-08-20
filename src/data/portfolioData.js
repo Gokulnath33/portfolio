@@ -253,6 +253,23 @@ export const projectsData = [
     ],
     demoUrl: "#",
     githubUrl: "https://github.com/Gokulnath33/amazon-web-app"
+  },
+  {
+    id: "mywebsite2",
+    title: "Personal Website",
+    subtitle: "Interactive HTML5 Portfolio Webpage",
+    category: "Full-Stack / Web",
+    featured: false,
+    description: "A personal portfolio webpage built with HTML5, CSS3, and JavaScript, featuring multimedia content including embedded video, image galleries, and styled sections showcasing academic background and institutional information.",
+    tools: ["HTML5", "CSS3", "JavaScript", "Embedded Video", "Responsive Layout", "Web Design"],
+    highlights: [
+      "Multimedia-rich webpage with embedded video player and image gallery integration",
+      "Custom CSS styling with gradient backgrounds and styled typography for visual appeal",
+      "Structured content sections highlighting academic profile and institutional details",
+      "Interactive navigation links connecting multiple web pages within the site"
+    ],
+    demoUrl: "#",
+    githubUrl: "https://github.com/Gokulnath33/mywebsite2"
   }
 ];
 

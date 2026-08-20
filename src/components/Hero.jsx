@@ -7,7 +7,8 @@ import {
   MapPin, 
   GraduationCap, 
   Sparkles,
-  ChevronDown
+  ChevronDown,
+  FileText
 } from 'lucide-react';
 import { Linkedin, Github, TwitterX, LeetCode, HackerRank } from './BrandIcons';
 import { personalInfo } from '../data/portfolioData';
@@ -87,6 +88,11 @@ export default function Hero() {
               <a href="#projects" className="btn-primary group">
                 <span>View Projects</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+
+              <a href="#resume" className="btn-secondary text-[var(--accent-cyan)] border-[rgba(6,182,212,0.3)] hover:bg-[rgba(6,182,212,0.1)]">
+                <FileText className="w-4 h-4 text-[var(--accent-cyan)]" />
+                <span>View Resume</span>
               </a>
 
               <a href="#certificates" className="btn-secondary text-[var(--accent-amber)] border-[rgba(245,158,11,0.3)] hover:bg-[rgba(245,158,11,0.1)]">
