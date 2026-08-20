@@ -1,0 +1,1 @@
+PDF and PNG certificate artifacts; ZIP archive (`certificates.zip`) bundling the full set for distribution.

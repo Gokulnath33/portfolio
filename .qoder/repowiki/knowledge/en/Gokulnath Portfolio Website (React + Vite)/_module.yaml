@@ -1,0 +1,17 @@
+schema_version: 1
+module_path: ""
+title: Gokulnath Portfolio Website (React + Vite)
+scope:
+    - README.md
+    - PORTFOLIO.txt
+    - .gitignore
+    - .oxlintrc.json
+    - package.json
+    - package-lock.json
+    - vite.config.js
+    - postcss.config.js
+    - tailwind.config.js
+    - index.html
+source_files: []
+depends_on: []
+related_to: []

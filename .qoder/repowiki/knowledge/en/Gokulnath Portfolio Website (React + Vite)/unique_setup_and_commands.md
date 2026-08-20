@@ -1,0 +1,1 @@
+`npm run dev` starts the Vite dev server with HMR (ignoring certificates and binary assets); `npm run build` produces a static production bundle; `npm run preview` serves the built output locally; `npm run lint` runs Oxlint across the project.

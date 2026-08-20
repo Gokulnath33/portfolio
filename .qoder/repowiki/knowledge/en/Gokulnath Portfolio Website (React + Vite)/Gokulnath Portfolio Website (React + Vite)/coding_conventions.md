@@ -1,0 +1,5 @@
+- All site content (personal info, education, skills, projects, experience, certifications) is modeled as plain exported data objects/arrays in `src/data/portfolioData.js` and consumed by components via imports rather than inline literals.
+- Global UI state (theme) is lifted to `App.jsx` and propagated downward via props (e.g. `theme`, `toggleTheme`) to child components like `Navbar` instead of being managed locally.
+- Persistent preferences are stored in `localStorage` using a namespaced key (`gokulnath_portfolio_theme`) and synchronized with DOM attributes (`data-theme`) via `useEffect`.
+- External service configuration is extracted into dedicated config modules (e.g. `src/config/emailjs.js`) exporting constants and helper functions, keeping secrets out of component files.
+- Each portfolio section is implemented as a self-contained functional component file under `src/components/` (e.g. `Hero.jsx`, `Projects.jsx`, `Certificates.jsx`) and composed declaratively inside `App.jsx`.

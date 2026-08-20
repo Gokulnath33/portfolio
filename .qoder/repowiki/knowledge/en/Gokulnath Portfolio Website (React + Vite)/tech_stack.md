@@ -1,0 +1,1 @@
+Vite 8 + React 19 with the official React plugin, Tailwind CSS 3 with custom brand colors and Google Fonts (Outfit, Plus Jakarta Sans, Fira Code), PostCSS + Autoprefixer, Oxlint for linting, EmailJS for contact form delivery, canvas-confetti for animations, and Lucide icons.

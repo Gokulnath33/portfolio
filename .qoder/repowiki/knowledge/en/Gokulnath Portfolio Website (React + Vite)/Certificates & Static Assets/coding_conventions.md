@@ -1,0 +1,2 @@
+- Certificates are grouped into per-issuer subdirectories named after the issuing organization (e.g., `INFOSYS CERT`, `TCS ION CERT`, `LINKEDIN CERT`).
+- Duplicate copies of every certificate exist in both `CERT/` and `public/certificates/` so the same file tree can serve as a backup and as the live web asset folder.

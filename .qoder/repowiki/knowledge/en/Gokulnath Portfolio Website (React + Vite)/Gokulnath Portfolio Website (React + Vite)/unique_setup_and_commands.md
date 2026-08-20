@@ -1,0 +1,1 @@
+To enable real email delivery, replace the placeholder `SERVICE_ID`, `TEMPLATE_ID`, and `PUBLIC_KEY` values in `src/config/emailjs.js` with credentials from an EmailJS account; without them the contact form runs in demo mode and simulates sending.

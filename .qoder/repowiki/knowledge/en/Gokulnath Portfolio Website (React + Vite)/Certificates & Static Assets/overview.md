@@ -1,0 +1,1 @@
+Static repository of student certification PDFs, screenshots, and website branding assets (favicon, icons, logo) organized by issuing platform.

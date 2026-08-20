@@ -212,6 +212,47 @@ export const projectsData = [
     ],
     demoUrl: "#",
     githubUrl: "https://github.com/Gokulnath33/Online-Voting-Registeration-System"
+  },
+  {
+    id: "splitzy",
+    title: "Splitzy",
+    subtitle: "Real-Time Expense Splitter (MERN + Socket.IO)",
+    category: "Full-Stack / Web",
+    featured: true,
+    description: "A live, multi-user expense-splitting application built with the MERN stack and Socket.IO. When any group member adds an expense, every other member's balance updates instantly on their screen — no refresh needed. Includes JWT authentication, a debt-simplification algorithm for minimum transactions, and an animated live progress dashboard.",
+    tools: ["React (Vite)", "Node.js", "Express", "MongoDB", "Mongoose", "Socket.IO", "JWT Auth", "Tailwind CSS v4", "Framer Motion"],
+    highlights: [
+      "Real-time WebSocket balance updates across all group members' screens instantly without page refresh",
+      "Debt-simplification algorithm calculates the minimum number of transactions needed to settle all debts",
+      "Live progress dashboard with animated ring showing percentage of group debts settled, total spent, and pending amounts",
+      "Personal real-time toast notifications — when a payment is marked paid, the recipient gets an instant alert",
+      "JWT-based authentication with signup/login, group creation, and multi-member management"
+    ],
+    architecture: [
+      { step: "1. Authentication", detail: "Users sign up/login via JWT; create or join expense groups with multiple members" },
+      { step: "2. Expense Logging", detail: "Any member adds an expense; Socket.IO broadcasts the update to all group members in real-time" },
+      { step: "3. Balance Calculation", detail: "Each member's share is computed; Framer Motion animates balance changes on every screen" },
+      { step: "4. Settle Up", detail: "Greedy debt-simplification algorithm matches biggest debtor with biggest creditor for minimum transactions" }
+    ],
+    demoUrl: "#",
+    githubUrl: "https://github.com/Gokulnath33/splitzy"
+  },
+  {
+    id: "amazon-web-app",
+    title: "Amazon Product Showcase",
+    subtitle: "E-Commerce Product Catalog Web Page",
+    category: "Full-Stack / Web",
+    featured: false,
+    description: "An Amazon-inspired product showcase web application featuring a multi-page layout with product cards, category browsing, and a responsive design. Built with pure HTML5 and CSS3, demonstrating front-end web development fundamentals and e-commerce UI patterns.",
+    tools: ["HTML5", "CSS3", "Responsive Design", "Product Cards", "Multi-Page Layout", "E-Commerce UI"],
+    highlights: [
+      "Multi-page product catalog with dedicated pages for individual product details and categories",
+      "Responsive CSS layout adapting to desktop, tablet, and mobile screen sizes",
+      "Amazon-inspired UI design with product cards, image galleries, and category navigation",
+      "Clean separation of structure (HTML) and styling (CSS) following web development best practices"
+    ],
+    demoUrl: "#",
+    githubUrl: "https://github.com/Gokulnath33/amazon-web-app"
   }
 ];
 
@@ -1077,5 +1118,28 @@ export const certificationsData = [
     fileUrl: "/certificates/SPOKEN TUTORIAL CERT....pdf",
     description: "Object-Oriented programming, Java Swing GUI, multithreading, and collections framework.",
     icon: "Code"
+  }
+];
+
+export const resumeData = [
+  {
+    id: "resume-double-side",
+    title: "Resume — Double Side",
+    subtitle: "Comprehensive Two-Page Resume",
+    description: "A detailed two-page resume covering education, technical skills, projects, certifications, and professional experience.",
+    fileUrl: "/Resume-GokulnathM-DoubleSide.pdf",
+    format: "PDF",
+    pages: "2 Pages",
+    fileSize: "65 KB"
+  },
+  {
+    id: "resume-single-side",
+    title: "Resume — Single Side",
+    subtitle: "Concise One-Page Resume",
+    description: "A focused one-page resume highlighting key qualifications, core competencies, and career highlights for quick reference.",
+    fileUrl: "/Resume-GokulnathM-SingleSide.pdf",
+    format: "PDF",
+    pages: "1 Page",
+    fileSize: "29 KB"
   }
 ];

@@ -1,0 +1,1 @@
+React 18 with Vite, Tailwind CSS for styling, EmailJS (`@emailjs/browser`) for client-side contact form delivery, and localStorage for persisting user theme preference.

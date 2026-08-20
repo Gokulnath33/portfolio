@@ -17,7 +17,7 @@ export default function Navbar({ theme, toggleTheme }) {
       }
 
       // Determine active section based on scroll position
-      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'certificates', 'contact'];
+      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'certificates', 'resume', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -44,6 +44,7 @@ export default function Navbar({ theme, toggleTheme }) {
     { name: 'Projects', href: '#projects', id: 'projects' },
     { name: 'Experience', href: '#experience', id: 'experience' },
     { name: 'Certificates', href: '#certificates', id: 'certificates' },
+    { name: 'Resume', href: '#resume', id: 'resume' },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 

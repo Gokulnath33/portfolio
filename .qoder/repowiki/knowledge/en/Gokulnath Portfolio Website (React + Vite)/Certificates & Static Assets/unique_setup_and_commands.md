@@ -1,0 +1,1 @@
+None — assets are deployed as-is to the web root. New certificates are added by placing a PDF/PNG into the appropriate issuer subfolder under both `CERT/` and `public/certificates/`.

@@ -1,0 +1,3 @@
+- Dark/light theming is toggled by setting the `[data-theme="dark"]` attribute on the document root, consumed uniformly by Tailwind classes across components.
+- Brand colors and typography are centralized in `tailwind.config.js` and referenced via Tailwind utility classes rather than inline styles or CSS variables.
+- Large static files (PDFs, ZIPs) are excluded from Vite's dev watcher to preserve hot-reload performance.

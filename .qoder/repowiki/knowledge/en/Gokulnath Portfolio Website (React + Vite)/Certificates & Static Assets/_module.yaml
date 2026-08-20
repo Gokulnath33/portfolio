@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: certificates_assets
+title: Certificates & Static Assets
+scope:
+    - public/
+    - CERT/
+source_files: []
+depends_on: []
+related_to:
+    - path: portfolio_app

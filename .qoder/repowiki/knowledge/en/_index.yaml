@@ -1,0 +1,48 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: en-US
+branch: main
+nodes_managed: true
+exported_at: "2026-08-20T10:34:24Z"
+modules:
+    "":
+        dir_name: Gokulnath Portfolio Website (React + Vite)
+        title: Gokulnath Portfolio Website (React + Vite)
+        scope:
+            - README.md
+            - PORTFOLIO.txt
+            - .gitignore
+            - .oxlintrc.json
+            - package.json
+            - package-lock.json
+            - vite.config.js
+            - postcss.config.js
+            - tailwind.config.js
+            - index.html
+        source_files: []
+        children:
+            - certificates_assets
+            - portfolio_app
+        depends_on: []
+        related_to: []
+    certificates_assets:
+        dir_name: Certificates & Static Assets
+        title: Certificates & Static Assets
+        scope:
+            - public/
+            - CERT/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: portfolio_app
+    portfolio_app:
+        dir_name: Gokulnath Portfolio Website (React + Vite)
+        title: Gokulnath Portfolio Website (React + Vite)
+        scope:
+            - src/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: certificates_assets
