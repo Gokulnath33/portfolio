@@ -17,6 +17,7 @@ import ScrollProgress from './components/ScrollProgress';
 import GlobalTilt from './components/GlobalTilt';
 import ClickConfetti from './components/ClickConfetti';
 import BackToTop from './components/BackToTop';
+import VideoFrameFX from './components/VideoFrameFX';
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
@@ -63,6 +64,9 @@ export default function App() {
 
       {/* Back To Top Button */}
       <BackToTop />
+
+      {/* Video Frame Effects (4 corners + traveling edges) */}
+      <VideoFrameFX />
 
       {/* Foreground Content */}
       <div className="relative z-10">

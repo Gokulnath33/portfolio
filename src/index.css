@@ -246,6 +246,265 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
+   VIDEO FRAME FX — viewfinder corners + traveling edge runners
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Edge energy runners (translate around the viewport perimeter) ── */
+.edge-runner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, var(--accent-cyan) 35%, transparent 70%);
+  box-shadow: 0 0 12px var(--accent-cyan), 0 0 26px rgba(0,240,255,0.55);
+  z-index: 1;
+}
+.edge-runner::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+}
+
+.edge-runner-top {
+  top: 3px;
+  left: 0;
+  animation: edgeRunTop 5.5s linear infinite;
+}
+.edge-runner-top::after {
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(270deg, rgba(0,240,255,0.85), transparent);
+}
+
+.edge-runner-right {
+  right: 3px;
+  top: 0;
+  color: var(--accent-violet);
+  background: radial-gradient(circle, #fff 0%, var(--accent-violet) 35%, transparent 70%);
+  box-shadow: 0 0 12px var(--accent-violet), 0 0 26px rgba(168,85,247,0.55);
+  animation: edgeRunRight 6.5s linear infinite 1.4s;
+}
+.edge-runner-right::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 150px;
+  width: 2px;
+  background: linear-gradient(0deg, rgba(168,85,247,0.85), transparent);
+}
+
+.edge-runner-bottom {
+  bottom: 3px;
+  left: 0;
+  color: var(--accent-pink);
+  background: radial-gradient(circle, #fff 0%, var(--accent-pink) 35%, transparent 70%);
+  box-shadow: 0 0 12px var(--accent-pink), 0 0 26px rgba(255,0,128,0.55);
+  animation: edgeRunBottom 5.5s linear infinite 2.8s;
+}
+.edge-runner-bottom::after {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,0,128,0.85), transparent);
+}
+
+.edge-runner-left {
+  left: 3px;
+  top: 0;
+  color: var(--accent-emerald);
+  background: radial-gradient(circle, #fff 0%, var(--accent-emerald) 35%, transparent 70%);
+  box-shadow: 0 0 12px var(--accent-emerald), 0 0 26px rgba(0,255,136,0.55);
+  animation: edgeRunLeft 6.5s linear infinite 4.2s;
+}
+.edge-runner-left::after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 150px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(0,255,136,0.85), transparent);
+}
+
+@keyframes edgeRunTop {
+  0%   { transform: translateX(-60px); opacity: 0; }
+  6%   { opacity: 1; }
+  94%  { opacity: 1; }
+  100% { transform: translateX(calc(100vw + 60px)); opacity: 0; }
+}
+@keyframes edgeRunRight {
+  0%   { transform: translateY(-60px); opacity: 0; }
+  6%   { opacity: 1; }
+  94%  { opacity: 1; }
+  100% { transform: translateY(calc(100vh + 60px)); opacity: 0; }
+}
+@keyframes edgeRunBottom {
+  0%   { transform: translateX(calc(100vw + 60px)); opacity: 0; }
+  6%   { opacity: 1; }
+  94%  { opacity: 1; }
+  100% { transform: translateX(-60px); opacity: 0; }
+}
+@keyframes edgeRunLeft {
+  0%   { transform: translateY(calc(100vh + 60px)); opacity: 0; }
+  6%   { opacity: 1; }
+  94%  { opacity: 1; }
+  100% { transform: translateY(-60px); opacity: 0; }
+}
+
+/* ── Viewfinder corner brackets with flowing light arms ── */
+.corner-bracket {
+  position: absolute;
+  width: 74px;
+  height: 74px;
+}
+.corner-bracket::before,
+.corner-bracket::after {
+  content: '';
+  position: absolute;
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+.corner-bracket::before { width: 100%; height: 3px; }
+.corner-bracket::after  { width: 3px; height: 100%; }
+
+.corner-tl { top: 12px; left: 12px; color: var(--accent-cyan); animation: cornerBreathe 4s ease-in-out infinite; }
+.corner-tl::before { top: 0; left: 0; background: linear-gradient(90deg, var(--accent-cyan), transparent); background-size: 220% 100%; animation: cornerArmH 2.6s linear infinite; }
+.corner-tl::after  { top: 0; left: 0; background: linear-gradient(180deg, var(--accent-cyan), transparent); background-size: 100% 220%; animation: cornerArmV 2.6s linear infinite 0.4s; }
+
+.corner-tr { top: 12px; right: 12px; color: var(--accent-violet); animation: cornerBreathe 4s ease-in-out infinite 0.8s; }
+.corner-tr::before { top: 0; right: 0; background: linear-gradient(270deg, var(--accent-violet), transparent); background-size: 220% 100%; animation: cornerArmHRev 2.6s linear infinite; }
+.corner-tr::after  { top: 0; right: 0; background: linear-gradient(180deg, var(--accent-violet), transparent); background-size: 100% 220%; animation: cornerArmV 2.6s linear infinite 0.4s; }
+
+.corner-bl { bottom: 12px; left: 12px; color: var(--accent-emerald); animation: cornerBreathe 4s ease-in-out infinite 1.6s; }
+.corner-bl::before { bottom: 0; left: 0; background: linear-gradient(90deg, var(--accent-emerald), transparent); background-size: 220% 100%; animation: cornerArmH 2.6s linear infinite 0.6s; }
+.corner-bl::after  { bottom: 0; left: 0; background: linear-gradient(0deg, var(--accent-emerald), transparent); background-size: 100% 220%; animation: cornerArmVRev 2.6s linear infinite; }
+
+.corner-br { bottom: 12px; right: 12px; color: var(--accent-pink); animation: cornerBreathe 4s ease-in-out infinite 2.4s; }
+.corner-br::before { bottom: 0; right: 0; background: linear-gradient(270deg, var(--accent-pink), transparent); background-size: 220% 100%; animation: cornerArmHRev 2.6s linear infinite 0.8s; }
+.corner-br::after  { bottom: 0; right: 0; background: linear-gradient(0deg, var(--accent-pink), transparent); background-size: 100% 220%; animation: cornerArmVRev 2.6s linear infinite 0.4s; }
+
+/* Glow orb pulsing at each corner vertex */
+.corner-orb {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  animation: cornerOrbPulse 1.6s ease-in-out infinite;
+}
+.corner-tl .corner-orb { top: -1px;  left: -1px; }
+.corner-tr .corner-orb { top: -1px;  right: -1px; }
+.corner-bl .corner-orb { bottom: -1px; left: -1px; }
+.corner-br .corner-orb { bottom: -1px; right: -1px; }
+
+@keyframes cornerArmH {
+  0%   { background-position: 120% 0; }
+  100% { background-position: -120% 0; }
+}
+@keyframes cornerArmHRev {
+  0%   { background-position: -120% 0; }
+  100% { background-position: 120% 0; }
+}
+@keyframes cornerArmV {
+  0%   { background-position: 0 120%; }
+  100% { background-position: 0 -120%; }
+}
+@keyframes cornerArmVRev {
+  0%   { background-position: 0 -120%; }
+  100% { background-position: 0 120%; }
+}
+@keyframes cornerBreathe {
+  0%, 100% { transform: translate(0, 0); }
+  25%      { transform: translate(2px, -2px); }
+  50%      { transform: translate(0, 0); }
+  75%      { transform: translate(-2px, 2px); }
+}
+@keyframes cornerOrbPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.6); opacity: 0.6; }
+}
+
+/* ── Live recording pill (bottom-left) ── */
+.rec-pill {
+  position: absolute;
+  bottom: 92px;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(2,6,23,0.55);
+  border: 1px solid rgba(255,0,68,0.35);
+  backdrop-filter: blur(6px);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  color: #ff4d6d;
+  font-weight: 700;
+  box-shadow: 0 0 14px rgba(255,0,68,0.25);
+  animation: recPillFloat 3.5s ease-in-out infinite;
+  z-index: 1;
+}
+.rec-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff0044;
+  box-shadow: 0 0 8px #ff0044, 0 0 16px rgba(255,0,68,0.6);
+  animation: recBlink 1.2s steps(2, start) infinite;
+}
+@keyframes recBlink { 50% { opacity: 0.15; } }
+@keyframes recPillFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+@media (max-width: 640px) { .rec-pill { display: none; } }
+
+/* ── Drifting corner sparkles ── */
+.frame-sparkle {
+  position: absolute;
+  font-size: 14px;
+  color: var(--accent-amber);
+  text-shadow: 0 0 12px currentColor;
+  animation: frameSparkleFloat 5s ease-in-out infinite;
+  z-index: 1;
+}
+.frame-sparkle-1 { top: 96px;  left: 26px;  animation-delay: 0s; }
+.frame-sparkle-2 { top: 30px;  right: 96px; color: var(--accent-cyan);    animation-delay: 1.3s; }
+.frame-sparkle-3 { bottom: 100px; left: 34px;  color: var(--accent-violet);  animation-delay: 2.6s; }
+.frame-sparkle-4 { bottom: 30px; right: 110px; color: var(--accent-emerald); animation-delay: 3.9s; }
+@keyframes frameSparkleFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0.3; }
+  50%      { transform: translateY(-22px) rotate(180deg) scale(1.3); opacity: 1; }
+}
+
+/* ── Slow scanline sweep across the whole viewport ── */
+.scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -160px;
+  height: 120px;
+  background: linear-gradient(180deg,
+    transparent,
+    rgba(0,240,255,0.05) 45%,
+    rgba(255,255,255,0.09) 50%,
+    rgba(168,85,247,0.05) 55%,
+    transparent);
+  animation: scanlineSweep 9s linear infinite;
+}
+@keyframes scanlineSweep {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(calc(100vh + 320px)); }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
    ROTATING CONIC BORDER (featured cards)
    ══════════════════════════════════════════════════════════════════════════ */
 .conic-border {
