@@ -151,6 +151,18 @@ export default function DynamicBackground({ theme = 'dark' }) {
     /* ── aurora waves ───────────────────────────────────────────────────── */
     let auroraT = 0;
 
+    /* ── twinkling star-crosses (big shimmer sparkles all over) ─────────── */
+    const starCrosses = [];
+    for (let i = 0; i < 26; i++) {
+      starCrosses.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        size: Math.random() * 6 + 3,
+        phase: Math.random() * Math.PI * 2,
+        speed: Math.random() * 0.02 + 0.008,
+      });
+    }
+
     /* ── render ─────────────────────────────────────────────────────────── */
     const render = () => {
       raf = requestAnimationFrame(render);
@@ -166,6 +178,7 @@ export default function DynamicBackground({ theme = 'dark' }) {
       };
       const c1 = lerp('orb1'), c2 = lerp('orb2'), c3 = lerp('orb3');
       const cStar = lerp('star');
+      const starRgb = hexToRgb(bp.star);
 
       ctx.clearRect(0, 0, W, H);
 
@@ -208,8 +221,26 @@ export default function DynamicBackground({ theme = 'dark' }) {
         ctx.fill();
       }
 
+      /* ── twinkling star-crosses ────────────────────────────────────────── */
+      starCrosses.forEach(sc => {
+        sc.phase += sc.speed;
+        const tw = 0.35 + (Math.sin(sc.phase) * 0.5 + 0.5) * 0.5;
+        const s = sc.size * (1 + Math.sin(sc.phase * 2) * 0.25);
+        ctx.save();
+        ctx.translate(sc.x, sc.y);
+        ctx.rotate(Math.sin(sc.phase * 1.5) * 0.3);
+        ctx.fillStyle = `rgba(${starRgb.r},${starRgb.g},${starRgb.b},${tw})`;
+        ctx.beginPath();
+        ctx.moveTo(0, -s);
+        ctx.quadraticCurveTo(s * 0.3, -s * 0.3, s, 0);
+        ctx.quadraticCurveTo(s * 0.3, s * 0.3, 0, s);
+        ctx.quadraticCurveTo(-s * 0.3, s * 0.3, -s, 0);
+        ctx.quadraticCurveTo(-s * 0.3, -s * 0.3, 0, -s);
+        ctx.fill();
+        ctx.restore();
+      });
+
       /* ── fireflies ──────────────────────────────────────────────────────── */
-      const starRgb = hexToRgb(bp.star);
       fireflies.forEach(f => {
         f.phase += f.speed;
         f.cx += f.drift;
@@ -337,6 +368,22 @@ export default function DynamicBackground({ theme = 'dark' }) {
       <div className="section-orb orb-2" />
       <div className="section-orb orb-3" />
       <div className="section-orb orb-4" />
+
+      {/* ── Page-edge neon glow borders (all 4 sides) ─────────────────────── */}
+      <div className="edge-glow edge-glow-left" />
+      <div className="edge-glow edge-glow-right" />
+      <div className="edge-glow edge-glow-top" />
+      <div className="edge-glow edge-glow-bottom" />
+
+      {/* ── Floating sparkles around page edges ───────────────────────────── */}
+      <span className="edge-sparkle edge-sparkle-1">✦</span>
+      <span className="edge-sparkle edge-sparkle-2">✦</span>
+      <span className="edge-sparkle edge-sparkle-3">✧</span>
+      <span className="edge-sparkle edge-sparkle-4">✦</span>
+      <span className="edge-sparkle edge-sparkle-5">✧</span>
+      <span className="edge-sparkle edge-sparkle-6">✦</span>
+      <span className="edge-sparkle edge-sparkle-7">✧</span>
+      <span className="edge-sparkle edge-sparkle-8">✦</span>
 
       {/* ── Radial vignette overlay ─────────────────────────────────────────── */}
       <div

@@ -3,11 +3,11 @@ schema_version: 1
 locale: en-US
 branch: main
 nodes_managed: true
-exported_at: "2026-08-21T02:20:05Z"
+exported_at: "2026-08-21T17:33:07Z"
 modules:
     "":
-        dir_name: Gokulnath M Portfolio Website (Vite + React)
-        title: Gokulnath M Portfolio Website (Vite + React)
+        dir_name: Gokulnath M Portfolio Site (Vite + React)
+        title: Gokulnath M Portfolio Site (Vite + React)
         scope:
             - README.md
             - PORTFOLIO.txt
@@ -36,8 +36,8 @@ modules:
         depends_on: []
         related_to: []
     portfolio_app:
-        dir_name: Gokulnath M Portfolio Website (React + Vite)
-        title: Gokulnath M Portfolio Website (React + Vite)
+        dir_name: Gokulnath M Portfolio React App
+        title: Gokulnath M Portfolio React App
         scope:
             - src/
         source_files: []

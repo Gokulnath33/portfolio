@@ -1,6 +1,6 @@
 schema_version: 1
 module_path: portfolio_app
-title: Gokulnath M Portfolio Website (React + Vite)
+title: Gokulnath M Portfolio React App
 scope:
     - src/
 source_files: []
