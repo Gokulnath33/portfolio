@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Music, Volume2, VolumeX, Pause, Play, Sparkles } from 'lucide-react';
+import { Music, Volume2, VolumeX, Volume1, Pause, Play, Sparkles } from 'lucide-react';
+
+const VOLUME_STEP = 0.1;
 
 export default function BackgroundMusic() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -23,6 +25,14 @@ export default function BackgroundMusic() {
     return audioRef.current;
   };
 
+  // Single source of truth for applying volume to the audio element
+  const applyVolume = (nextVolume, nextMuted) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.muted = nextMuted;
+    audio.volume = nextMuted ? 0 : nextVolume;
+  };
+
   const togglePlay = () => {
     setHasInteracted(true);
     const audio = getAudio();
@@ -44,25 +54,30 @@ export default function BackgroundMusic() {
   const handleVolumeChange = (e) => {
     const val = parseFloat(e.target.value);
     setVolume(val);
-    // Unmute automatically when raising volume from zero
     if (val > 0 && isMuted) {
       setIsMuted(false);
-      if (audioRef.current) audioRef.current.muted = false;
+      applyVolume(val, false);
+    } else {
+      applyVolume(val, isMuted);
     }
-    // Apply volume live to the audio element
-    if (audioRef.current) {
-      audioRef.current.volume = isMuted ? 0 : val;
+  };
+
+  const changeVolumeBy = (delta) => {
+    setHasInteracted(true);
+    const next = Math.min(1, Math.max(0, Math.round((volume + delta) * 100) / 100));
+    setVolume(next);
+    if (next > 0 && isMuted) {
+      setIsMuted(false);
+      applyVolume(next, false);
+    } else {
+      applyVolume(next, isMuted);
     }
   };
 
   const toggleMute = () => {
     const nextMute = !isMuted;
     setIsMuted(nextMute);
-    if (audioRef.current) {
-      audioRef.current.muted = nextMute;
-      // Force gain to match muted state immediately
-      audioRef.current.volume = nextMute ? 0 : volume;
-    }
+    applyVolume(volume, nextMute);
   };
 
   // Cleanup on unmount
@@ -77,7 +92,7 @@ export default function BackgroundMusic() {
 
   return (
     <div className="fixed bottom-6 right-6 z-[90] flex items-center gap-2">
-      {/* Expanded Volume Control Slider */}
+      {/* Expanded Volume Control Slider (hover panel) */}
       <div
         className={`transition-all duration-300 transform origin-right flex items-center gap-2 px-3 py-2 rounded-2xl glass-pill backdrop-blur-xl border border-[var(--border-color)] shadow-xl ${
           showVolumeSlider ? 'opacity-100 scale-100 translate-x-0' : 'opacity-0 scale-95 translate-x-4 pointer-events-none'
@@ -108,55 +123,86 @@ export default function BackgroundMusic() {
         </span>
       </div>
 
-      {/* Main Music Player Floating Button */}
-      <div
-        className="relative group"
-        onMouseEnter={() => setShowVolumeSlider(true)}
-        onMouseLeave={() => setShowVolumeSlider(false)}
-      >
-        {/* Pulsing glow background when playing */}
-        {isPlaying && (
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 via-indigo-500 to-pink-500 blur-md opacity-70 animate-pulse pointer-events-none" />
-        )}
-
+      {/* Always-visible Volume Controls + Music Button */}
+      <div className="flex items-center gap-1.5 bg-[var(--bg-card)] backdrop-blur-xl border border-[var(--border-color)] rounded-full p-1.5 shadow-2xl">
+        {/* Volume Down */}
         <button
-          onClick={togglePlay}
-          className={`relative z-10 flex items-center gap-2.5 px-4 py-3 rounded-full transition-all duration-300 border shadow-2xl backdrop-blur-xl ${
-            isPlaying
-              ? 'bg-gradient-to-r from-[rgba(99,102,241,0.9)] to-[rgba(236,72,153,0.9)] text-white border-white/30 shadow-[0_0_25px_rgba(99,102,241,0.5)] scale-105'
-              : 'bg-[var(--bg-card)] text-[var(--text-muted)] border-[var(--border-color)] hover:border-[var(--accent-cyan)] hover:text-white hover:scale-105'
-          }`}
-          title={isPlaying ? 'Pause Music' : 'Play Music'}
+          onClick={() => changeVolumeBy(-VOLUME_STEP)}
+          className="w-8 h-8 rounded-full flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-cyan)] hover:bg-[rgba(0,240,255,0.12)] hover:scale-110 active:scale-95 transition-all duration-200"
+          title="Decrease Volume"
+          aria-label="Decrease volume"
         >
-          {isPlaying ? (
-            <>
-              <Pause className="w-4 h-4 text-white animate-pulse" />
-              {/* Equalizer Wave Visualizer Bars */}
-              <div className="flex items-end gap-0.5 h-4 px-1">
-                <span className="w-0.5 bg-white rounded-full animate-[bounce_0.8s_infinite_100ms] h-full" />
-                <span className="w-0.5 bg-white rounded-full animate-[bounce_0.6s_infinite_200ms] h-3/4" />
-                <span className="w-0.5 bg-white rounded-full animate-[bounce_1.0s_infinite_300ms] h-full" />
-                <span className="w-0.5 bg-white rounded-full animate-[bounce_0.7s_infinite_150ms] h-2/3" />
-              </div>
-            </>
-          ) : (
-            <>
-              <Music className="w-4 h-4 text-[var(--accent-cyan)] group-hover:rotate-12 transition-transform" />
-              <span className="text-xs font-bold font-mono tracking-wider uppercase hidden sm:inline">
-                Music
-              </span>
-            </>
-          )}
+          <Volume1 className="w-4 h-4" />
         </button>
 
-        {/* First time tooltip clue */}
-        {!hasInteracted && !isPlaying && (
-          <div className="absolute bottom-full right-0 mb-3 whitespace-nowrap px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-[11px] font-semibold shadow-xl border border-white/20 animate-bounce pointer-events-none flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-            <span>Click to Play Epic Beat 🎵</span>
-            <div className="absolute -bottom-1 right-5 w-2 h-2 bg-violet-600 rotate-45" />
-          </div>
-        )}
+        {/* Main Play / Pause Button */}
+        <div className="relative group" onMouseEnter={() => setShowVolumeSlider(true)} onMouseLeave={() => setShowVolumeSlider(false)}>
+          {isPlaying && (
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500 via-indigo-500 to-pink-500 blur-md opacity-70 animate-pulse pointer-events-none" />
+          )}
+          <button
+            onClick={togglePlay}
+            className={`relative z-10 flex items-center gap-2 px-3 py-2 rounded-full transition-all duration-300 border shadow-xl ${
+              isPlaying
+                ? 'bg-gradient-to-r from-[rgba(99,102,241,0.9)] to-[rgba(236,72,153,0.9)] text-white border-white/30 shadow-[0_0_25px_rgba(99,102,241,0.5)] scale-105'
+                : 'bg-[var(--bg-card)] text-[var(--text-muted)] border-[var(--border-color)] hover:border-[var(--accent-cyan)] hover:text-white hover:scale-105'
+            }`}
+            title={isPlaying ? 'Pause Music' : 'Play Music'}
+          >
+            {isPlaying ? (
+              <>
+                <Pause className="w-4 h-4 text-white animate-pulse" />
+                {/* Equalizer Wave Visualizer Bars */}
+                <div className="flex items-end gap-0.5 h-4 px-1">
+                  <span className="w-0.5 bg-white rounded-full animate-[bounce_0.8s_infinite_100ms] h-full" />
+                  <span className="w-0.5 bg-white rounded-full animate-[bounce_0.6s_infinite_200ms] h-3/4" />
+                  <span className="w-0.5 bg-white rounded-full animate-[bounce_1.0s_infinite_300ms] h-full" />
+                  <span className="w-0.5 bg-white rounded-full animate-[bounce_0.7s_infinite_150ms] h-2/3" />
+                </div>
+              </>
+            ) : (
+              <>
+                <Music className="w-4 h-4 text-[var(--accent-cyan)] group-hover:rotate-12 transition-transform" />
+                <span className="text-xs font-bold font-mono tracking-wider uppercase hidden sm:inline">
+                  Music
+                </span>
+              </>
+            )}
+          </button>
+
+          {/* First time tooltip clue */}
+          {!hasInteracted && !isPlaying && (
+            <div className="absolute bottom-full right-0 mb-3 whitespace-nowrap px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white text-[11px] font-semibold shadow-xl border border-white/20 animate-bounce pointer-events-none flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              <span>Click to Play Epic Beat 🎵</span>
+              <div className="absolute -bottom-1 right-5 w-2 h-2 bg-violet-600 rotate-45" />
+            </div>
+          )}
+        </div>
+
+        {/* Volume Up */}
+        <button
+          onClick={() => changeVolumeBy(VOLUME_STEP)}
+          className="w-8 h-8 rounded-full flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-cyan)] hover:bg-[rgba(0,240,255,0.12)] hover:scale-110 active:scale-95 transition-all duration-200"
+          title="Increase Volume"
+          aria-label="Increase volume"
+        >
+          <Volume2 className="w-4 h-4" />
+        </button>
+      </div>
+
+      {/* Live Volume % Badge */}
+      <div
+        className={`hidden sm:flex flex-col items-center justify-center w-12 h-12 rounded-full glass-pill backdrop-blur-xl border border-[var(--border-color)] shadow-xl transition-all duration-300 ${
+          isMuted ? 'text-rose-400' : 'text-[var(--accent-cyan)]'
+        }`}
+      >
+        <span className="text-xs font-bold font-mono leading-none">
+          {isMuted ? 'MUT' : `${Math.round(volume * 100)}%`}
+        </span>
+        <span className="text-[8px] font-mono uppercase tracking-wider text-[var(--text-dim)] mt-0.5">
+          {isMuted ? 'Muted' : 'Volume'}
+        </span>
       </div>
     </div>
   );

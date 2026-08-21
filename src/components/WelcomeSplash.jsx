@@ -3,6 +3,7 @@ import { personalInfo } from '../data/portfolioData';
 
 export default function WelcomeSplash({ onComplete }) {
   const [phase, setPhase] = useState(0); // 0=hidden, 1=particles, 2=name, 3=tagline, 4=exit
+  const [progress, setProgress] = useState(0); // cinematic loading %
   const canvasRef = useRef(null);
   const finishedRef = useRef(false);
 
@@ -15,6 +16,21 @@ export default function WelcomeSplash({ onComplete }) {
     if (h < 21) return 'Good Evening!';
     return 'Good Night!';
   };
+
+  // Cinematic intro loading bar — fills like a video buffering to 100%
+  useEffect(() => {
+    const t0 = performance.now();
+    const duration = 3200;
+    let raf;
+    const tick = (now) => {
+      const p = Math.min(1, (now - t0) / duration);
+      const eased = 1 - Math.pow(1 - p, 2);
+      setProgress(Math.round(eased * 100));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   // Allow clicking anywhere to skip the intro
   const handleSkip = () => {
@@ -150,6 +166,25 @@ export default function WelcomeSplash({ onComplete }) {
             </span>
             <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[var(--accent-pink)]" />
           </div>
+        </div>
+      </div>
+
+      {/* Cinematic intro progress bar — video-style loading with % */}
+      <div className={`absolute bottom-10 left-1/2 -translate-x-1/2 w-[70vw] max-w-md pointer-events-none transition-opacity duration-500 ${phase >= 1 && phase < 4 ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[10px] font-mono uppercase tracking-[0.35em] text-[var(--text-dim)] flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-cyan)] animate-ping" />
+            Loading Experience
+          </span>
+          <span className="text-sm font-mono font-bold text-[var(--accent-cyan)] tabular-nums">
+            {progress}%
+          </span>
+        </div>
+        <div className="h-1.5 rounded-full bg-[rgba(255,255,255,0.08)] border border-[var(--border-color)] overflow-hidden">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-indigo-500 to-pink-500 transition-[width] duration-150 ease-out"
+            style={{ width: `${progress}%`, boxShadow: '0 0 14px rgba(99,102,241,0.8)' }}
+          />
         </div>
       </div>
 

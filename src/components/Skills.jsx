@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Code2, 
   FileCode, 
@@ -32,6 +32,73 @@ const iconMap = {
   Globe, GitBranch, Terminal, BookOpenCheck,
   Palette, Video, Sparkles, Users, Figma
 };
+
+/**
+ * SkillBar — video-player style progress meter.
+ * Fills + counts up when scrolled into view, then keeps a flowing
+ * shine and pulsing playhead dot, exactly like a running video timeline.
+ */
+function SkillBar({ skill, IconComponent }) {
+  const [display, setDisplay] = useState(0);
+  const [started, setStarted] = useState(false);
+  const trackRef = useRef(null);
+  const rafRef = useRef(null);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started) {
+          setStarted(true);
+          const duration = 1400;
+          const t0 = performance.now();
+          const tick = (now) => {
+            const p = Math.min(1, (now - t0) / duration);
+            const eased = 1 - Math.pow(1 - p, 3);
+            setDisplay(Math.round(eased * skill.level));
+            if (p < 1) rafRef.current = requestAnimationFrame(tick);
+          };
+          rafRef.current = requestAnimationFrame(tick);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => {
+      obs.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [skill.level, started]);
+
+  return (
+    <div className="group">
+      <div className="flex items-center justify-between text-sm mb-1.5">
+        <div className="flex items-center gap-2.5">
+          <IconComponent className="w-4 h-4 text-[var(--accent-cyan)] group-hover:text-[var(--accent-pink)] transition-colors" />
+          <span className="font-semibold text-[var(--text-main)] font-heading">{skill.name}</span>
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[rgba(255,255,255,0.05)] text-[var(--text-muted)] border border-[var(--border-color)]">
+            {skill.tag}
+          </span>
+        </div>
+        <span className="font-mono text-xs font-bold text-[var(--accent-cyan)] tabular-nums">
+          {started ? display : 0}%
+        </span>
+      </div>
+
+      {/* Video-style running meter */}
+      <div className="skill-bar-track" ref={trackRef}>
+        <div
+          className="skill-bar-fill group-hover:brightness-125 transition-[width,filter] duration-700"
+          style={{ width: `${started ? skill.level : 0}%` }}
+        >
+          <span className="skill-bar-playhead" />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState('All');
@@ -100,28 +167,7 @@ export default function Skills() {
               <div className="flex flex-col gap-5">
                 {catGroup.skills.map((skill, skillIdx) => {
                   const IconComponent = iconMap[skill.icon] || Code2;
-                  return (
-                    <div key={skillIdx} className="group">
-                      <div className="flex items-center justify-between text-sm mb-1.5">
-                        <div className="flex items-center gap-2.5">
-                          <IconComponent className="w-4 h-4 text-[var(--accent-cyan)] group-hover:text-[var(--accent-pink)] transition-colors" />
-                          <span className="font-semibold text-[var(--text-main)] font-heading">{skill.name}</span>
-                          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[rgba(255,255,255,0.05)] text-[var(--text-muted)] border border-[var(--border-color)]">
-                            {skill.tag}
-                          </span>
-                        </div>
-                        <span className="font-mono text-xs font-bold text-[var(--accent-cyan)]">{skill.level}%</span>
-                      </div>
-
-                      {/* Animated Skill Level Meter */}
-                      <div className="w-full h-2.5 rounded-full bg-[rgba(255,255,255,0.06)] overflow-hidden border border-[var(--border-color)] p-0.5">
-                        <div 
-                          className="h-full rounded-full bg-[var(--gradient-brand)] group-hover:bg-[var(--gradient-vibrant)] transition-all duration-700 ease-out"
-                          style={{ width: `${skill.level}%` }}
-                        />
-                      </div>
-                    </div>
-                  );
+                  return <SkillBar key={skillIdx} skill={skill} IconComponent={IconComponent} />;
                 })}
               </div>
 
