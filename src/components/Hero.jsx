@@ -19,6 +19,16 @@ export default function Hero() {
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Time-of-day greeting
+  const getGreeting = () => {
+    const h = new Date().getHours();
+    if (h < 5) return 'Burning the Midnight Oil, I\'m';
+    if (h < 12) return 'Good Morning, I\'m';
+    if (h < 17) return 'Good Afternoon, I\'m';
+    if (h < 21) return 'Good Evening, I\'m';
+    return 'Good Night, I\'m';
+  };
+
   // Cursor spotlight + 3D tilt on the hero card
   const handleCardMouseMove = (e) => {
     const card = e.currentTarget;
@@ -83,7 +93,7 @@ export default function Hero() {
             {/* Main Headline */}
             <div className="animate-fade-in-up hero-stagger-2">
               <h2 className="text-xl sm:text-2xl font-medium text-[var(--text-muted)] font-mono mb-2">
-                Hello World, I'm
+                {getGreeting()}
               </h2>
               <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight font-heading mb-4">
                 <span className="gradient-text">{personalInfo.name}</span>
@@ -200,12 +210,14 @@ export default function Hero() {
                 style={{ animationDuration: '4s' }}
               />
 
-              {/* Glass Hero Card with cursor spotlight + 3D tilt */}
-              <div
-                onMouseMove={handleCardMouseMove}
-                onMouseLeave={handleCardMouseLeave}
-                className="hero-spotlight relative glass-card p-8 rounded-3xl border border-[var(--border-glow)] overflow-hidden flex flex-col items-center text-center"
-              >
+              {/* Glass Hero Card with cursor spotlight + 3D tilt + conic border */}
+              <div className="conic-border-wrap relative">
+                <span className="conic-border" />
+                <div
+                  onMouseMove={handleCardMouseMove}
+                  onMouseLeave={handleCardMouseLeave}
+                  className="hero-spotlight relative glass-card p-8 rounded-3xl border border-[var(--border-glow)] overflow-hidden flex flex-col items-center text-center"
+                >
                 
                 {/* Glowing Avatar Shield */}
                 <div className="relative w-40 h-40 mb-6 flex items-center justify-center">
@@ -252,6 +264,7 @@ export default function Hero() {
                   <span className="badge badge-emerald text-[11px]">UI/UX Design</span>
                 </div>
 
+                </div>
               </div>
             </div>
           </div>

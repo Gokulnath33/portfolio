@@ -13,6 +13,10 @@ import Footer from './components/Footer';
 import BackgroundMusic from './components/BackgroundMusic';
 import CursorFireTrail from './components/CursorFireTrail';
 import WelcomeSplash from './components/WelcomeSplash';
+import ScrollProgress from './components/ScrollProgress';
+import GlobalTilt from './components/GlobalTilt';
+import ClickConfetti from './components/ClickConfetti';
+import BackToTop from './components/BackToTop';
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
@@ -47,6 +51,18 @@ export default function App() {
 
       {/* Cursor Fire Trail Effect */}
       <CursorFireTrail />
+
+      {/* Scroll Progress Bar */}
+      <ScrollProgress />
+
+      {/* Global 3D Tilt on cards */}
+      <GlobalTilt />
+
+      {/* Click Confetti Bursts */}
+      <ClickConfetti />
+
+      {/* Back To Top Button */}
+      <BackToTop />
 
       {/* Foreground Content */}
       <div className="relative z-10">

@@ -246,6 +246,46 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
+   ROTATING CONIC BORDER (featured cards)
+   ══════════════════════════════════════════════════════════════════════════ */
+.conic-border {
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--conic-angle, 0deg),
+    #00f0ff,
+    #6366f1,
+    #a855f7,
+    #ff0080,
+    #ffdd00,
+    #00ff88,
+    #00f0ff
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: conicSpin 6s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+@property --conic-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes conicSpin {
+  from { --conic-angle: 0deg; }
+  to   { --conic-angle: 360deg; }
+}
+.conic-border-wrap:hover .conic-border {
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
    SECTION-SPECIFIC BACKGROUNDS (vibrant tinted overlays per section)
    ══════════════════════════════════════════════════════════════════════════ */
 

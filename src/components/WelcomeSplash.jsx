@@ -6,6 +6,16 @@ export default function WelcomeSplash({ onComplete }) {
   const canvasRef = useRef(null);
   const finishedRef = useRef(false);
 
+  // Time-of-day special greeting
+  const getGreeting = () => {
+    const h = new Date().getHours();
+    if (h < 5) return 'Burning the Midnight Oil?';
+    if (h < 12) return 'Good Morning!';
+    if (h < 17) return 'Good Afternoon!';
+    if (h < 21) return 'Good Evening!';
+    return 'Good Night!';
+  };
+
   // Allow clicking anywhere to skip the intro
   const handleSkip = () => {
     if (finishedRef.current) return;
@@ -109,7 +119,7 @@ export default function WelcomeSplash({ onComplete }) {
         {/* Greeting */}
         <div className={`transition-all duration-700 ${phase >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-xl sm:text-2xl font-mono text-[var(--accent-cyan)] mb-4 tracking-wider">
-            ✨ Welcome to my Universe ✨
+            ✨ {getGreeting()} Welcome to my Universe ✨
           </p>
         </div>
 
