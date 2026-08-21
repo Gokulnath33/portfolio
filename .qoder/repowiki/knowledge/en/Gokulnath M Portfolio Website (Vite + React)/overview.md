@@ -1,0 +1,1 @@
+Root Vite project that composes the React SPA, static certificate assets, and shared Tailwind/PostCSS/Oxlint configuration into a single deployable portfolio site.

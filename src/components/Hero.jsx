@@ -19,6 +19,24 @@ export default function Hero() {
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Cursor spotlight + 3D tilt on the hero card
+  const handleCardMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    card.style.setProperty('--spot-x', `${x}%`);
+    card.style.setProperty('--spot-y', `${y}%`);
+    // Subtle 3D tilt toward the cursor
+    const rotateY = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+    const rotateX = -((e.clientY - rect.top) / rect.height - 0.5) * 10;
+    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+  };
+
+  const handleCardMouseLeave = (e) => {
+    e.currentTarget.style.transform = '';
+  };
+
   // Dynamic typing effect for taglines
   useEffect(() => {
     const currentTagline = personalInfo.taglines[taglineIndex];
@@ -51,7 +69,7 @@ export default function Hero() {
           <div className="lg:col-span-7 flex flex-col items-start gap-6 text-left">
             
             {/* Status Pills */}
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="animate-fade-in-up hero-stagger-1 flex flex-wrap items-center gap-3">
               <div className="badge badge-cyan flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-[var(--accent-cyan)] animate-ping" />
                 Available for Roles & Internships
@@ -63,7 +81,7 @@ export default function Hero() {
             </div>
 
             {/* Main Headline */}
-            <div>
+            <div className="animate-fade-in-up hero-stagger-2">
               <h2 className="text-xl sm:text-2xl font-medium text-[var(--text-muted)] font-mono mb-2">
                 Hello World, I'm
               </h2>
@@ -79,35 +97,35 @@ export default function Hero() {
             </div>
 
             {/* Short Bio */}
-            <p className="text-lg text-[var(--text-muted)] leading-relaxed max-w-2xl">
+            <p className="animate-fade-in-up hero-stagger-3 text-lg text-[var(--text-muted)] leading-relaxed max-w-2xl">
               Ambitious 3rd-year B.Tech AI & Data Science student (<span className="text-[var(--accent-cyan)] font-semibold">8.3 CGPA</span>) specializing in machine learning, full-stack web engineering, and intuitive UI/UX design. Eager to solve complex challenges with data-driven code.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="animate-fade-in-up hero-stagger-4 flex flex-wrap gap-4 pt-2">
               <a href="#projects" className="btn-primary group">
                 <span>View Projects</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
 
-              <a href="#resume" className="btn-secondary text-[var(--accent-cyan)] border-[rgba(6,182,212,0.3)] hover:bg-[rgba(6,182,212,0.1)]">
+              <a href="#resume" className="btn-sparkle btn-secondary text-[var(--accent-cyan)] border-[rgba(0,240,255,0.35)] hover:bg-[rgba(0,240,255,0.12)]">
                 <FileText className="w-4 h-4 text-[var(--accent-cyan)]" />
                 <span>View Resume</span>
               </a>
 
-              <a href="#certificates" className="btn-secondary text-[var(--accent-amber)] border-[rgba(245,158,11,0.3)] hover:bg-[rgba(245,158,11,0.1)]">
+              <a href="#certificates" className="btn-sparkle btn-secondary text-[var(--accent-amber)] border-[rgba(255,221,0,0.35)] hover:bg-[rgba(255,221,0,0.12)]">
                 <Download className="w-4 h-4 text-[var(--accent-amber)]" />
                 <span>Certificates & Bundle</span>
               </a>
 
-              <a href="#contact" className="btn-secondary">
+              <a href="#contact" className="btn-sparkle btn-secondary">
                 <Mail className="w-4 h-4 text-[var(--accent-pink)]" />
                 <span>Contact Me</span>
               </a>
             </div>
 
             {/* Social & Coding Platform Bar */}
-            <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-[var(--border-color)] w-full">
+            <div className="animate-fade-in-up hero-stagger-5 flex flex-wrap items-center gap-4 pt-4 border-t border-[var(--border-color)] w-full">
               <span className="text-xs text-[var(--text-dim)] uppercase tracking-wider font-mono font-bold">
                 Profiles:
               </span>
@@ -173,7 +191,7 @@ export default function Hero() {
           </div>
 
           {/* Right Hero Graphic & Profile Highlight */}
-          <div className="lg:col-span-5 flex justify-center">
+          <div className="animate-fade-in-scale hero-stagger-3 lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-md">
               
               {/* Outer Glowing Border Frame */}
@@ -182,8 +200,12 @@ export default function Hero() {
                 style={{ animationDuration: '4s' }}
               />
 
-              {/* Glass Hero Card */}
-              <div className="relative glass-card p-8 rounded-3xl border border-[var(--border-glow)] overflow-hidden flex flex-col items-center text-center">
+              {/* Glass Hero Card with cursor spotlight + 3D tilt */}
+              <div
+                onMouseMove={handleCardMouseMove}
+                onMouseLeave={handleCardMouseLeave}
+                className="hero-spotlight relative glass-card p-8 rounded-3xl border border-[var(--border-glow)] overflow-hidden flex flex-col items-center text-center"
+              >
                 
                 {/* Glowing Avatar Shield */}
                 <div className="relative w-40 h-40 mb-6 flex items-center justify-center">
@@ -240,7 +262,7 @@ export default function Hero() {
       {/* Scroll Down Indicator */}
       <a 
         href="#about" 
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-[var(--text-muted)] hover:text-[var(--accent-cyan)] transition-colors group cursor-pointer"
+        className="animate-fade-in-up hero-stagger-6 absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-[var(--text-muted)] hover:text-[var(--accent-cyan)] transition-colors group cursor-pointer"
       >
         <span className="font-mono">Scroll Down</span>
         <ChevronDown className="w-4 h-4 animate-bounce text-[var(--accent-cyan)]" />

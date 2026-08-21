@@ -85,14 +85,14 @@ export default function DynamicBackground({ theme = 'dark' }) {
     /* ── click burst ───────────────────────────────────────────────────── */
     const bursts = [];
     const onClick = e => {
-      for (let i = 0; i < 18; i++) {
-        const angle = (Math.PI * 2 * i) / 18;
-        const speed = Math.random() * 4 + 2;
+      for (let i = 0; i < 26; i++) {
+        const angle = (Math.PI * 2 * i) / 26;
+        const speed = Math.random() * 5 + 2.5;
         bursts.push({
           x: e.clientX, y: e.clientY,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          life: 1, size: Math.random() * 4 + 2,
+          life: 1, size: Math.random() * 5 + 2,
         });
       }
     };
@@ -102,15 +102,15 @@ export default function DynamicBackground({ theme = 'dark' }) {
     let particles = [];
     const initParticles = () => {
       particles = [];
-      const count = Math.min(Math.floor(W / 18), 90);
+      const count = Math.min(Math.floor(W / 12), 150);
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * W,
           y: Math.random() * H,
-          r: Math.random() * 2.2 + 0.8,
-          vx: (Math.random() - 0.5) * 0.55,
-          vy: (Math.random() - 0.5) * 0.55,
-          alpha: Math.random() * 0.55 + 0.2,
+          r: Math.random() * 2.8 + 0.8,
+          vx: (Math.random() - 0.5) * 0.7,
+          vy: (Math.random() - 0.5) * 0.7,
+          alpha: Math.random() * 0.6 + 0.25,
           twinkle: Math.random() * Math.PI * 2,
         });
       }
@@ -123,28 +123,28 @@ export default function DynamicBackground({ theme = 'dark' }) {
       shooters.push({
         x: Math.random() * W,
         y: Math.random() * H * 0.5,
-        len: Math.random() * 140 + 60,
-        speed: Math.random() * 10 + 6,
+        len: Math.random() * 180 + 80,
+        speed: Math.random() * 12 + 7,
         angle: Math.PI / 4 + (Math.random() - 0.5) * 0.4,
         life: 1,
-        width: Math.random() * 1.5 + 0.5,
+        width: Math.random() * 2 + 0.6,
       });
     };
-    setInterval(spawnShooter, 1800);
+    setInterval(spawnShooter, 1200);
 
     /* ── fireflies ──────────────────────────────────────────────────────── */
     const fireflies = [];
-    for (let i = 0; i < 22; i++) {
+    for (let i = 0; i < 36; i++) {
       fireflies.push({
         x: Math.random() * W,
         y: Math.random() * H,
-        r: Math.random() * 3 + 1.5,
+        r: Math.random() * 3.5 + 1.5,
         phase: Math.random() * Math.PI * 2,
-        speed: Math.random() * 0.008 + 0.004,
-        orbitR: Math.random() * 60 + 20,
+        speed: Math.random() * 0.009 + 0.005,
+        orbitR: Math.random() * 80 + 25,
         cx: Math.random() * W,
         cy: Math.random() * H,
-        drift: (Math.random() - 0.5) * 0.3,
+        drift: (Math.random() - 0.5) * 0.4,
       });
     }
 
@@ -177,7 +177,7 @@ export default function DynamicBackground({ theme = 'dark' }) {
         const col = band === 0 ? c1 : band === 1 ? c2 : c3;
         const rgb = hexToRgb(bp[band === 0 ? 'orb1' : band === 1 ? 'orb2' : 'orb3']);
         grad.addColorStop(0, `rgba(${rgb.r},${rgb.g},${rgb.b},0)`);
-        grad.addColorStop(0.5, `rgba(${rgb.r},${rgb.g},${rgb.b},0.06)`);
+        grad.addColorStop(0.5, `rgba(${rgb.r},${rgb.g},${rgb.b},0.09)`);
         grad.addColorStop(1, `rgba(${rgb.r},${rgb.g},${rgb.b},0)`);
         ctx.save();
         ctx.beginPath();
@@ -190,6 +190,22 @@ export default function DynamicBackground({ theme = 'dark' }) {
         ctx.fillStyle = grad;
         ctx.fill();
         ctx.restore();
+      }
+
+      /* ── floating color dust (extra glow motes) ───────────────────────── */
+      const moteCount = 12;
+      for (let i = 0; i < moteCount; i++) {
+        const t = (auroraT * 30 + i * 7.3) % 1;
+        const mx = (t * W + Math.sin(t * Math.PI * 2 + i) * 120 + W * 0.1) % W;
+        const my = H * 0.2 + Math.sin(t * Math.PI * 3 + i * 2) * H * 0.25;
+        const moteRgb = hexToRgb(bp[['orb1','orb2','orb3','star'][i % 4]]);
+        const grd = ctx.createRadialGradient(mx, my, 0, mx, my, 60);
+        grd.addColorStop(0, `rgba(${moteRgb.r},${moteRgb.g},${moteRgb.b},0.10)`);
+        grd.addColorStop(1, `rgba(${moteRgb.r},${moteRgb.g},${moteRgb.b},0)`);
+        ctx.beginPath();
+        ctx.arc(mx, my, 60, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.fill();
       }
 
       /* ── fireflies ──────────────────────────────────────────────────────── */

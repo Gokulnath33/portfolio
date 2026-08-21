@@ -12,11 +12,21 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackgroundMusic from './components/BackgroundMusic';
 import CursorFireTrail from './components/CursorFireTrail';
+import WelcomeSplash from './components/WelcomeSplash';
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('gokulnath_portfolio_theme') || 'dark';
   });
+  const [showSplash, setShowSplash] = useState(() => {
+    // Show the welcome splash once per browser session
+    return !sessionStorage.getItem('gokulnath_splash_shown');
+  });
+
+  const handleSplashComplete = () => {
+    sessionStorage.setItem('gokulnath_splash_shown', 'true');
+    setShowSplash(false);
+  };
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -29,6 +39,9 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen selection:bg-[var(--accent-cyan)] selection:text-black">
+      {/* Welcome Splash Greeting */}
+      {showSplash && <WelcomeSplash onComplete={handleSplashComplete} />}
+
       {/* Colorful Interactive Background */}
       <DynamicBackground theme={theme} />
 

@@ -75,7 +75,7 @@ export default function Navbar({ theme, toggleTheme }) {
             <a
               key={link.id}
               href={link.href}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 relative ${
+              className={`nav-link px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 relative ${
                 activeSection === link.id
                   ? 'text-white bg-[var(--gradient-brand)] shadow-md'
                   : 'text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[rgba(255,255,255,0.05)]'
@@ -139,7 +139,7 @@ export default function Navbar({ theme, toggleTheme }) {
                 className={`px-4 py-3 rounded-xl font-medium transition-all ${
                   activeSection === link.id
                     ? 'bg-[var(--gradient-brand)] text-white font-semibold'
-                    : 'text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)]'
+                    : 'text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] hover:translate-x-1'
                 }`}
               >
                 {link.name}
