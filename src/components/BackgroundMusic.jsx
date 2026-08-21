@@ -2,6 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Music, Volume2, VolumeX, Volume1, Pause, Play, Sparkles } from 'lucide-react';
 
 const VOLUME_STEP = 0.1;
+// The preview MP3 is mastered very quietly, so we amplify up to 3x
+// through the Web Audio gain stage — audio.volume alone caps at 1.0.
+const MAX_GAIN = 3;
+
+// Map linear volume (0..1) to a perceptual gain curve (0 → MAX_GAIN)
+const volumeToGain = (v) => Math.pow(v, 1.6) * MAX_GAIN;
 
 export default function BackgroundMusic() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -11,31 +17,65 @@ export default function BackgroundMusic() {
   const [hasInteracted, setHasInteracted] = useState(false);
 
   const audioRef = useRef(null);
+  const ctxRef = useRef(null); // AudioContext for the boost chain
+  const gainRef = useRef(null); // GainNode — can exceed 1.0
 
-  // Lazily create the audio element once
+  /**
+   * Playback chain (built lazily on first user interaction):
+   * audio element → MediaElementSource → compressor → gain (up to 3x) → speakers.
+   * The HTML <audio> element stays in charge of playback/looping; the gain
+   * stage compensates for the quiet master level of the preview MP3.
+   */
   const getAudio = () => {
     if (!audioRef.current) {
       const audio = new Audio('/music/background-music.mp3');
       audio.loop = true;
       audio.preload = 'auto';
-      audio.volume = volume;
+      audio.volume = 1; // loudness is handled by the gain node
       audio.addEventListener('ended', () => setIsPlaying(false));
       audioRef.current = audio;
+
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      const ctx = new Ctx();
+      const source = ctx.createMediaElementSource(audio);
+
+      // Compressor keeps the boosted signal from clipping on loud peaks
+      const comp = ctx.createDynamicsCompressor();
+      comp.threshold.value = -18;
+      comp.knee.value = 24;
+      comp.ratio.value = 8;
+      comp.attack.value = 0.003;
+      comp.release.value = 0.25;
+
+      const gain = ctx.createGain();
+      source.connect(comp);
+      comp.connect(gain);
+      gain.connect(ctx.destination);
+
+      ctxRef.current = ctx;
+      gainRef.current = gain;
     }
     return audioRef.current;
   };
 
-  // Single source of truth for applying volume to the audio element
-  const applyVolume = (nextVolume, nextMuted) => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    audio.muted = nextMuted;
-    audio.volume = nextMuted ? 0 : nextVolume;
+  // Push the current volume/mute state into the gain node with a smooth ramp
+  const applyGain = (mute, vol) => {
+    if (!gainRef.current || !ctxRef.current) return;
+    gainRef.current.gain.setTargetAtTime(
+      mute ? 0 : volumeToGain(vol),
+      ctxRef.current.currentTime,
+      0.02
+    );
   };
 
   const togglePlay = () => {
     setHasInteracted(true);
     const audio = getAudio();
+    // Resume the context if the browser suspended it (iOS/Safari)
+    if (ctxRef.current && ctxRef.current.state === 'suspended') {
+      ctxRef.current.resume();
+    }
+    applyGain(isMuted, volume); // sync gain after (re)creating the chain
     if (isPlaying) {
       audio.pause();
       setIsPlaying(false);
@@ -56,9 +96,9 @@ export default function BackgroundMusic() {
     setVolume(val);
     if (val > 0 && isMuted) {
       setIsMuted(false);
-      applyVolume(val, false);
+      applyGain(false, val);
     } else {
-      applyVolume(val, isMuted);
+      applyGain(isMuted, val);
     }
   };
 
@@ -68,16 +108,16 @@ export default function BackgroundMusic() {
     setVolume(next);
     if (next > 0 && isMuted) {
       setIsMuted(false);
-      applyVolume(next, false);
+      applyGain(false, next);
     } else {
-      applyVolume(next, isMuted);
+      applyGain(isMuted, next);
     }
   };
 
   const toggleMute = () => {
     const nextMute = !isMuted;
     setIsMuted(nextMute);
-    applyVolume(volume, nextMute);
+    applyGain(nextMute, volume);
   };
 
   // Cleanup on unmount
@@ -86,6 +126,9 @@ export default function BackgroundMusic() {
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.src = '';
+      }
+      if (ctxRef.current) {
+        ctxRef.current.close().catch(() => {});
       }
     };
   }, []);
